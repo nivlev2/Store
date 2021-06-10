@@ -6,9 +6,14 @@ import Home from './comps/Home';
 import Page404 from './comps/page404';
 import Login from './comps/Login';
 import Cart from './comps/cart';
-
+import {reducer} from './reducers/index'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
+import {m} from 'redux-thunk'
+let reduxDevTool = window.__REDUX_DEVTOOLS_EXTENSION__() ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
 function App() {
   return (
+    <Provider store={createStore(reducer,reduxDevTool)}>
     <Router>
       <header className="container-fluid shadow-sm">
         <Navbar />
@@ -24,6 +29,7 @@ function App() {
       </main>
       <footer></footer>
     </Router>
+    </Provider>
   );
 }
 
