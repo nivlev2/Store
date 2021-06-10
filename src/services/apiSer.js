@@ -22,7 +22,7 @@ export const doApiMethod = async (_url, _method, _bodyData) => {
       data: _bodyData,
       headers: {
         'content-type': "application/json",
-        "x-auth-token": localStorage["tok"]
+        "x-auth-token": localStorage["token"]
       }
     })
     return resp.data;

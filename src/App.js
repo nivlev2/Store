@@ -8,12 +8,28 @@ import Login from './comps/Login';
 import Cart from './comps/cart';
 import {reducer} from './reducers/index'
 import {Provider} from 'react-redux'
-import {createStore} from 'redux'
-import {m} from 'redux-thunk'
-let reduxDevTool = window.__REDUX_DEVTOOLS_EXTENSION__() ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from "redux-thunk";
+
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    }) : compose;
+
+const enhancer = composeEnhancers(
+  applyMiddleware(thunk),
+  // other store enhancers if any
+);
+const store = createStore(reducer, enhancer);
+
+// let reduxDevTool = window.__REDUX_DEVTOOLS_EXTENSION__() ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
 function App() {
   return (
-    <Provider store={createStore(reducer,reduxDevTool)}>
+    <Provider store={store}>
     <Router>
       <header className="container-fluid shadow-sm">
         <Navbar />
@@ -28,6 +44,7 @@ function App() {
         </Switch>
       </main>
       <footer></footer>
+      <ToastContainer position="top-left"/>
     </Router>
     </Provider>
   );
