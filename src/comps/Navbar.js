@@ -16,7 +16,7 @@ function NavBar(props) {
         let resp = await doApiMethod(url,'GET');
         console.log(resp);
         if(resp.msg){
-          dispatch(Actions.setUserLogin())
+          dispatch(Actions.checkIfLoggedIn())
         }
 
       } catch (err) {

@@ -3,17 +3,22 @@ import {Actions} from '../actions/index'
 import {useDispatch,useSelector} from 'react-redux'
 import { API_URL, doApiMethod } from '../services/apiSer';
 function ProductsList(props){
-    console.log("here");
     let dispatch = useDispatch()
     let cart = useSelector(state => state.cartList)
-    console.log(cart);
     useState(()=>{
         dispatch(Actions.getProds())
     },[])
     const addToCart = async (_id) =>{
         try{
             let url = API_URL +'/users/updateCart'
-            console.log(cart);
+            let newCart;
+            if(_id in cart){
+                newCart = {...cart}
+                newCart[_id] ++
+            }else{
+                newCart = {...cart,[_id]:1}
+            }
+            console.log(newCart);
             // let newCart = {...cart,_id}
             // let dataBody = {cart: newCart}
             // //TODO: get the new cart with ids only from userInfo and then do this action
@@ -23,6 +28,7 @@ function ProductsList(props){
             console.log(err);
         }
     }
+    
     let prods_ar = useSelector(state => state.products)
     return(
         <div className="container">

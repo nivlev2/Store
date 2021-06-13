@@ -1,6 +1,7 @@
+const userCart = localStorage["cart"] ? JSON.parse(localStorage["cart"]) : {}
 const initState = {
     login:false,
-    cartList:{},
+    cartList:userCart,
     products:[]
 }
 
@@ -11,6 +12,8 @@ export const reducer = (state = {...initState},action) =>{
         case "GET_USER_CART":
             return {...state,cartList:action.payload}
         case "LOGGED_IN":
+            return {...state,login:true,cartList:action.payload}
+        case "CHECK_IF_LOGGED_IN" :
             return {...state,login:true}
         case 'REMOVE_USER':
             localStorage.removeItem('token')

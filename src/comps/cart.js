@@ -21,6 +21,7 @@ function Cart(props){
             console.log(err);
         }
     }
+    console.log(cart);
     return(
         <div>Cart work</div> 
     )

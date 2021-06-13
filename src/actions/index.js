@@ -7,7 +7,6 @@ export const Actions ={
           const response = await doApiGet(url)
           console.log(response);
           dispatch({type:"GET_PRODUCTS",payload:response})
- 
           } catch (err) {
                console.log(err);
           }
@@ -23,9 +22,20 @@ export const Actions ={
                throw(err)
           }     
      },
-     setUserLogin: () =>{
-          console.log("setted");
-          return {type:"LOGGED_IN"}
+     setUserLogin: () => async dispatch =>{
+        try {
+            let url = API_URL + '/users/userInfo'
+            const response = await doApiMethod(url,'GET')
+            console.log(response);
+            localStorage.setItem('cart', JSON.stringify(response.cart))
+            dispatch({type:"LOGGED_IN",payload:response.cart})
+       } catch (err) {
+            console.log(err);
+            throw(err)
+       }     
+     },
+     checkIfLoggedIn: () =>{
+        return {type:"CHECK_IF_LOGGED_IN"}
      },
      removeUser: () =>{
           console.log('removed');
