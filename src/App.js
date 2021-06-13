@@ -31,9 +31,8 @@ function App() {
   return (
     <Provider store={store}>
     <Router>
-      <header className="container-fluid shadow-sm">
+      <header className="container-fluid shadow-sm bg-dark ">
         <Navbar />
-        <hr/>
       </header>
       <main className="container">
         <Switch>

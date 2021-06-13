@@ -16,13 +16,14 @@ function NavBar(props) {
         if(resp.msg){
           dispatch(Actions.setUserLogin())
         }
+
       } catch (err) {
         dispatch(Actions.removeUser())
         console.log(err);
       }
   }
   return (
-    <div className="container nav_top p-2 ">
+    <div className="container nav_top p-1 ">
       <div className="row align-items-center">
         <div className="logo col-lg-3 d-flex justify-content-between align-items-center">
           <h2 className="text-danger">Store</h2>
@@ -37,17 +38,21 @@ function NavBar(props) {
         </div>
         {/* style -> with condition */}
         <nav
+                    onClick={() => {
+                      setShowMobileNav(!showMobileNav);
+                    }}
+        
           className={"col-lg-9 text-end"}
           style={{ display: showMobileNav && "block" }}
         >
           <Link to="/">
-            <i className="fa fa-home h3" aria-hidden="true"></i>
+            <i className="fa fa-home h3 icon" aria-hidden="true" ></i>
           </Link>
           <Link to="/login">
-            <i className="fa fa-user-circle-o h3" aria-hidden="true"></i>
+            <i className="fa fa-user-circle-o h3 icon" aria-hidden="true"></i>
           </Link>
           <Link to="/cart">
-            <i className="fa fa-shopping-cart h3" aria-hidden="true"></i>
+            <i className="fa fa-shopping-cart h3 icon" aria-hidden="true"></i>
           </Link>
         </nav>
       </div>
