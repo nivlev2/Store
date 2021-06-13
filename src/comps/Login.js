@@ -31,8 +31,11 @@ function Login(props){
     let passwordRef =  register("password",{required:true, minLength:3}) ;
 
     return(
-        <div className="container">
-    
+      <div>
+      <div className="login-bg">
+      </div>
+        <div className="container z-i ">
+        <h3>Login now</h3>
         <form onSubmit={handleSubmit(onSubForm)} className="col-lg-6 mx-auto shadow p-3 rounded mt-3">
           <div>
             <label>Email:</label>
@@ -44,9 +47,10 @@ function Login(props){
             <input {...passwordRef} type="text" className="form-control" />
             {errors.password && <span className="text-danger">Enter min 3 charts password</span>}
           </div>
-         
+          {/* <Link t></Link> */}
           <button className="btn btn-success mt-3">Log in</button>
         </form>
+      </div>
       </div>
       )    
 }

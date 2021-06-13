@@ -12,7 +12,35 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.login-bg{
+  margin-top: 30px;
+  background-image: url('./assets/images/login-bg.jpg');
+  min-height: 90vh;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
+  /* min-width: 100vw; */
+}
+.z-i{
+  z-index: 2;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
