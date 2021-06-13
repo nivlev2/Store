@@ -22,23 +22,24 @@ export const Actions ={
                throw(err)
           }     
      },
-     setUserLogin: () => async dispatch =>{
-        try {
-            let url = API_URL + '/users/userInfo'
-            const response = await doApiMethod(url,'GET')
-            console.log(response);
-            localStorage.setItem('cart', JSON.stringify(response.cart))
-            dispatch({type:"LOGGED_IN",payload:response.cart})
-       } catch (err) {
-            console.log(err);
-            throw(err)
-       }     
-     },
-     checkIfLoggedIn: () =>{
-        return {type:"CHECK_IF_LOGGED_IN"}
+     setUserLogin: () =>{
+          return {type:"LOGGED_IN"}
      },
      removeUser: () =>{
           console.log('removed');
+          localStorage.removeItem('token')
           return {type:"REMOVE_USER"}
      }
 }
+
+// => async dispatch =>{
+//      try {
+//        //   let url = API_URL + '/users/userInfo'
+//        //   const response = await doApiMethod(url,'GET')
+//        // ,payload:cartData
+//          dispatch({type:"LOGGED_IN"})
+//     } catch (err) {
+//          console.log(err);
+//          throw(err)
+//     }     
+//   },

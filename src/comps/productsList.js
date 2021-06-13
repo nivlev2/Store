@@ -8,22 +8,13 @@ function ProductsList(props){
     useState(()=>{
         dispatch(Actions.getProds())
     },[])
+
     const addToCart = async (_id) =>{
         try{
             let url = API_URL +'/users/updateCart'
-            let newCart;
-            if(_id in cart){
-                newCart = {...cart}
-                newCart[_id] ++
-            }else{
-                newCart = {...cart,[_id]:1}
-            }
-            console.log(newCart);
-            // let newCart = {...cart,_id}
-            // let dataBody = {cart: newCart}
-            // //TODO: get the new cart with ids only from userInfo and then do this action
-            // let resp = await doApiMethod(url,'PUT',dataBody)
-            // console.log(resp);
+            let prod = {_id:_id}
+            let resp = await doApiMethod(url,'PUT',prod)
+            console.log(resp);
         }catch(err){
             console.log(err);
         }

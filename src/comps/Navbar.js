@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState,useEffect } from "react";
 import {Actions} from "../actions/index"
 import { useDispatch } from "react-redux";
@@ -14,9 +13,8 @@ function NavBar(props) {
       try {
         let url = API_URL +'/users/authUser';
         let resp = await doApiMethod(url,'GET');
-        console.log(resp);
         if(resp.msg){
-          dispatch(Actions.checkIfLoggedIn())
+          dispatch(Actions.setUserLogin())
         }
 
       } catch (err) {
