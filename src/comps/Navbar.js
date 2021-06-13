@@ -16,7 +16,6 @@ function NavBar(props) {
         if(resp.msg){
           dispatch(Actions.setUserLogin())
         }
-
       } catch (err) {
         dispatch(Actions.removeUser())
         console.log(err);

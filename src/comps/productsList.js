@@ -4,11 +4,9 @@ import {useDispatch,useSelector} from 'react-redux'
 import { API_URL, doApiMethod } from '../services/apiSer';
 function ProductsList(props){
     let dispatch = useDispatch()
-    let cart = useSelector(state => state.cartList)
     useState(()=>{
         dispatch(Actions.getProds())
     },[])
-
     const addToCart = async (_id) =>{
         try{
             let url = API_URL +'/users/updateCart'
