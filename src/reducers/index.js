@@ -1,10 +1,10 @@
 const initState = {
     login:false,
-    cartList:[],
+    cartList:{},
     products:[]
 }
 
-export const reducer = (state = initState,action) =>{
+export const reducer = (state = {...initState},action) =>{
     switch(action.type){
         case "GET_PRODUCTS":
             return {...state,products:action.payload};

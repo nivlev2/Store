@@ -4,14 +4,21 @@ import { Actions } from '../actions';
 
 function Cart(props){
     let login = useSelector(state =>state.login)
+    let cart = useSelector(state => state.cartList)
     let dispatch = useDispatch()
     useEffect(() => {
         getCart()
     },[login])
+    console.log(cart);
     const getCart =  () =>{
-        console.log(login);
-        if(login){
+        try{
+            if(login){
             dispatch(Actions.getUserCart())
+            }
+        }
+        catch(err){
+            console.log("from catch");
+            console.log(err);
         }
     }
     return(

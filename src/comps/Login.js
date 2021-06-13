@@ -10,13 +10,12 @@ function Login(props){
     const {register , handleSubmit ,  formState: { errors } } = useForm();
     const history = useHistory();
     const dispatch = useDispatch();
+    
     const onSubForm= async (formData)=>{
         try{
         let url = API_URL + '/users/login'
         let resp = await doApiMethod(url,'POST',formData);
         localStorage.setItem('token', resp.token);
-        let user = await doApiMethod(API_URL + '/users/userInfo','GET')
-        console.log(user.cart);
         //TODO: Dispatch cart to user.cart and remove this to userSer file
         dispatch(Actions.setUserLogin())
         toast.success('Logged in successfully')

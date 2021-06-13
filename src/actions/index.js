@@ -14,13 +14,13 @@ export const Actions ={
      },
      getUserCart: () => async dispatch =>{
           try {
-               let url = API_URL + '/users/cart'
+               let url = API_URL + '/users/userInfo'
                const response = await doApiMethod(url,'GET')
                console.log(response);
-               dispatch({type:"GET_USER_CART",payload:response})
-      
+               dispatch({type:"GET_USER_CART",payload:response.cart})
           } catch (err) {
                console.log(err);
+               throw(err)
           }     
      },
      setUserLogin: () =>{

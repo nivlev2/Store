@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let item = {milk:1}
+        localStorage.setItem("item",JSON.stringify(item))
+        let item1 = localStorage["item"]
+        let item2 = JSON.parse(localStorage["item"])
+        console.log("item1----",item1);
+        console.log("item2-----",item2);
+        console.log(typeof(item2));
+        console.log(item1);
+    </script>
+</body>
+</html>
