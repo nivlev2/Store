@@ -15,8 +15,14 @@ export const Actions ={
           try {
                let url = API_URL + '/users/userInfo'
                const response = await doApiMethod(url,'GET')
-               console.log(response);
-               dispatch({type:"GET_USER_CART",payload:response.cart})
+               let url2 = API_URL + '/users/cart'
+               const showCart = await doApiMethod(url2,'GET')
+               let num = 0;
+               for(let item of showCart){
+                    let tempSum = item.price * response.cart[item._id]
+                    num +=tempSum
+               }
+               dispatch({type:"GET_USER_CART",payload:{cart:response.cart,showCart:showCart,total:num}})
           } catch (err) {
                console.log(err);
                throw(err)
