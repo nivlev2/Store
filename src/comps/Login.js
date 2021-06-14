@@ -1,6 +1,7 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
 import {toast} from "react-toastify";
+import {Link} from "react-router-dom"
 import {API_URL,doApiMethod} from '../services/apiSer'
 import {useHistory} from "react-router-dom"
 import {Actions} from'../actions/index'
@@ -47,7 +48,7 @@ function Login(props){
             <input {...passwordRef} type="text" className="form-control" />
             {errors.password && <span className="text-danger">Enter min 3 charts password</span>}
           </div>
-          {/* <Link t></Link> */}
+          <Link to='/signup' className="d-block mt-3 text-warning link-to-login">Not register yet? Click here and sign up now</Link>
           <button className="btn btn-success mt-3">Log in</button>
         </form>
       </div>

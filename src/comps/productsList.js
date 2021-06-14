@@ -2,12 +2,22 @@ import React, { useState } from 'react';
 import {Actions} from '../actions/index'
 import {toast} from 'react-toastify'
 import {useDispatch,useSelector} from 'react-redux'
-import { API_URL, doApiMethod } from '../services/apiSer';
+import { API_URL, doApiGet, doApiMethod } from '../services/apiSer';
 import '../css_comps/products.css'
 function ProductsList(props){
+    let [page,setPage] = useState(0)
+    let [amountPages,setAmountPages] = useState('')
     let dispatch = useDispatch()
+    const pagesAmount = async () =>{
+        let url = API_URL + '/products/count'
+        let resp = await doApiGet(url)
+        setAmountPages(Array(Math.ceil(resp / 6)))
+        console.log(resp);
+    }
+    console.log(amountPages);
     useState(()=>{
-        dispatch(Actions.getProds())
+        pagesAmount()
+        dispatch(Actions.getProds(page))
     },[])
     const addToCart = async (_id) =>{
         try{

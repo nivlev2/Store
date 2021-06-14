@@ -41,6 +41,9 @@
   text-align: center;
 
 }
+.link-to-login:hover{
+  color: rgb(118, 118, 252) !important;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

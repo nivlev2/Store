@@ -1,9 +1,9 @@
 import { doApiGet,API_URL, doApiMethod } from "../services/apiSer"
 
 export const Actions ={
-     getProds: () => async dispatch =>{
+     getProds: (page) => async dispatch =>{
           try {
-          let url = API_URL + '/products'
+          let url = API_URL + '/products?page=' + page
           const response = await doApiGet(url)
           console.log(response);
           dispatch({type:"GET_PRODUCTS",payload:response})

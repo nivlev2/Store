@@ -1,14 +1,22 @@
 import React, { useState,useEffect } from "react";
 import {Actions} from "../actions/index"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { API_URL, doApiMethod } from "../services/apiSer";
+import { toast } from "react-toastify";
 function NavBar(props) {
   let [showMobileNav, setShowMobileNav] = useState(false);
   let dispatch = useDispatch()
   useEffect(()=>{
     checkIfLoggedIn()
   },[])
+  let login = useSelector(state => state.login)
+  console.log(login);
+  const logOut = ()=>{
+    localStorage.removeItem('token')
+    toast.warning("bye bye")
+    dispatch(Actions.removeUser())
+  }
   const checkIfLoggedIn =async () =>{
       try {
         let url = API_URL +'/users/authUser';
@@ -48,9 +56,12 @@ function NavBar(props) {
           <Link to="/">
             <i className="fa fa-home h3 icon" aria-hidden="true" ></i>
           </Link>
-          <Link to="/login">
+          {login?<Link><i onClick={logOut} class="fa fa-sign-out h3 icon " aria-hidden="true"></i></Link>
+            : 
+            <Link to="/login">
             <i className="fa fa-user-circle-o h3 icon" aria-hidden="true"></i>
           </Link>
+}
           <Link to="/cart">
             <i className="fa fa-shopping-cart h3 icon" aria-hidden="true"></i>
           </Link>
