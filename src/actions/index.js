@@ -22,7 +22,7 @@ export const Actions ={
                throw(err)
           }     
      },
-     setUserLogin: () =>{
+     setUserLogin: (userName) => {
           return {type:"LOGGED_IN"}
      },
      removeUser: () =>{

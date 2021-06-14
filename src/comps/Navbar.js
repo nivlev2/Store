@@ -11,6 +11,7 @@ function NavBar(props) {
     checkIfLoggedIn()
   },[])
   let login = useSelector(state => state.login)
+  const userName = useSelector(state => state.userName)
   console.log(login);
   const logOut = ()=>{
     localStorage.removeItem('token')
@@ -35,6 +36,7 @@ function NavBar(props) {
       <div className="row align-items-center">
         <div className="logo col-lg-3 d-flex justify-content-between align-items-center">
           <h2 className="text-danger">Store</h2>
+          {userName && <h4 className="text-danger">Hello {userName}</h4>}
           <div
             className="burger"
             onClick={() => {

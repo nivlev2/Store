@@ -1,5 +1,6 @@
 import React from 'react';
 import {useForm} from 'react-hook-form'
+import { useSelector } from 'react-redux';
 import {Link, useHistory} from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { API_URL, doApiMethod } from '../services/apiSer';
@@ -7,6 +8,11 @@ import { API_URL, doApiMethod } from '../services/apiSer';
 function SignUp(props){
     const {register , handleSubmit ,  formState: { errors } } = useForm();
     let history = useHistory()
+    const login = useSelector(state => state.login);
+    if(login){
+      history.push('/')
+    }
+
     const onSubForm = async (formData) =>{
         try {
             let url = API_URL + '/users'

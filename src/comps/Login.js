@@ -5,24 +5,27 @@ import {Link} from "react-router-dom"
 import {API_URL,doApiMethod} from '../services/apiSer'
 import {useHistory} from "react-router-dom"
 import {Actions} from'../actions/index'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Login(props){
     const {register , handleSubmit ,  formState: { errors } } = useForm();
     const history = useHistory();
     const dispatch = useDispatch();
-    
+    const login = useSelector(state => state.login);
+    if(login){
+      history.push('/')
+    }
     const onSubForm= async (formData)=>{
         try{
         let url = API_URL + '/users/login'
         let resp = await doApiMethod(url,'POST',formData);
+        
         localStorage.setItem('token', resp.token);
-        //TODO: Dispatch cart to user.cart and remove this to userSer file
         dispatch(Actions.setUserLogin())
         toast.success('Logged in successfully')
         history.push('/')
         }catch(e){
-          console.log(e);
+          toast.error("Email or password wrong")
         }
     }
     let emailRef = register("email",{
