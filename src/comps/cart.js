@@ -2,10 +2,11 @@ import React,{useEffect} from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Actions } from '../actions';
-import { API_URL, doApiMethod } from '../services/apiSer';
-
+import { API_URL, doApiGet, doApiMethod } from '../services/apiSer';
+import '../css_comps/cart.css'
+import { toast } from 'react-toastify';
 function Cart(props){
-    let [list,setList] = useState([])
+    let [wasChange,setWasChange] = useState(false)
     let login = useSelector(state =>state.login)
     let cart = useSelector(state => state.cartList)
     let showCart = useSelector(state => state.showCart)
@@ -13,7 +14,7 @@ function Cart(props){
     let dispatch = useDispatch()
     useEffect(() => {
         getCart()
-    },[login])
+    },[login,wasChange])
     const getCart =  () =>{
         try{
             if(login){
@@ -27,18 +28,57 @@ function Cart(props){
             console.log(err);
         }
     }
+    const delOne = async(_id) =>{
+        try {
+            const url = API_URL +'/users/deleteOne'
+            const response = await doApiMethod(url,"PUT",{_id:_id})
+            if(response.n === 1){
+                // getCart()
+                setWasChange(!wasChange)
+                toast.success("Item removed")
+            }
+        } catch (e) {
+            console.log(e.response);
+        }
+    }
+    console.log(total);
     return(
-        <div>{showCart.map(item =>{
+        <div>
+
+       <table className="table table-striped  mt-5">
+       <thead className="bg-warning text-light">
+         <tr>
+           <th>#</th>
+           <th>Name</th>
+           <th></th>
+           <th>amount</th>
+           <th>price</th>
+
+         </tr>
+       </thead>
+  <tbody>
+        {showCart.map((item,i) =>{
+            
             return(
-                <div key={item._id}>
-                <h3>Name {item.name}</h3>
-                <img src={item.image} className="img w-25"/>
-                <p>price {item.price}</p>
-                <p>amount: {cart[item._id]}</p>
-                </div>
+                <tr key={item._id}>   
+                 <td>{i+1}
+                 <i onClick={()=>{
+                     delOne(item._id)
+                 }} class="fa fa-trash m-2 table-icon" aria-hidden="true"></i>
+
+                 </td>
+                <td>{item.name}</td>
+                <td><img src={item.image} style={{height:"50px"}}/></td>
+                <td>{cart[item._id]}</td>
+                <td>{item.price}$</td>
+                </tr>
             )
             
-        })}</div> 
+        })}
+        </tbody>
+      </table>
+      </div>
+
     )
 }
 
