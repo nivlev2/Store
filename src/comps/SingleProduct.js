@@ -22,12 +22,16 @@ function SingleProduct(props){
                       {/* <input ref={amount} min="1" max="20" type="number"/> */}
                     {/* <a href=""><i class="fa fa-heart"></i></a> */}
                     <div className="counter">
-                        <div onClick={()=>{
-                            setProdAmount(-1)
+                        <div style={amount < 2? {cursor:"not-allowed"}: {cursor:"pointer"}} onClick={()=>{
+                            if(amount > 1){
+                                setProdAmount(-1)
+                            }
                         }} className="decrement">-</div>
                         <div className="count">{amount}</div>
-                        <div onClick={()=>{
-                            setProdAmount(+1)
+                        <div  style={amount > 98? {cursor:"not-allowed"}: {cursor:"pointer"}} onClick={()=>{
+                            if(amount < 99){
+                                setProdAmount(+1)
+                            }
                         }} className="increment">+</div>
                     </div>
                     <i 
