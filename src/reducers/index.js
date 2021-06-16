@@ -13,6 +13,8 @@ export const reducer = (state = {...initState},action) =>{
             return {...state,products:action.payload};
         case "GET_USER_CART":
             return {...state,cartList:action.payload.cart,showCart:action.payload.showCart,total:action.payload.total}
+        case "RESET_USER_CART":
+            return{...state,cartList:{},showCart:[]}
         case "LOGGED_IN":
             return {...state,login:true}
         case 'REMOVE_USER':

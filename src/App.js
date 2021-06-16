@@ -33,7 +33,9 @@ function App() {
     <Provider store={store}>
     <Router>
       <header className="container-fluid shadow-sm bg-dark ">
-        <Navbar />
+        {/* <Navbar /> */}
+        <Route  path="/" render={(props)=> <Navbar props={props}/>}/>
+
       </header>
       <main className="container">
         <Switch>

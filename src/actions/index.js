@@ -28,6 +28,9 @@ export const Actions ={
                throw(err)
           }     
      },
+     resetUserCart:() =>{
+          return {type:"RESET_USER_CART"}
+     },
      setUserLogin: (userName) => {
           return {type:"LOGGED_IN"}
      },

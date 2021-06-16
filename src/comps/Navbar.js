@@ -9,7 +9,7 @@ function NavBar(props) {
   let dispatch = useDispatch()
   useEffect(()=>{
     checkIfLoggedIn()
-  },[])
+  },[props.props.location])
   let login = useSelector(state => state.login)
   const userName = useSelector(state => state.userName)
   console.log(login);

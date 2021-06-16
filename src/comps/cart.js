@@ -19,9 +19,10 @@ function Cart(props){
     const getCart =  () =>{
         try{
             if(login){
+                //reset userCart
             dispatch(Actions.getUserCart())
             }else{
-                console.log("baba");
+                dispatch(Actions.resetUserCart())
             }
         }
         catch(err){
