@@ -20,7 +20,7 @@ function ProductsList(props){
         dispatch(Actions.getProds(page))
     },[page])
     const addToCart = async (_id,amount) =>{
-        const num = amount.current.value
+        const num = amount
         try{
             let url = API_URL +'/users/updateCart'
             let prod = {_id:_id,amount:num}

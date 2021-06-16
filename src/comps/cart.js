@@ -5,6 +5,7 @@ import { Actions } from '../actions';
 import { API_URL, doApiGet, doApiMethod } from '../services/apiSer';
 import '../css_comps/cart.css'
 import { toast } from 'react-toastify';
+import SingleCart from './SingleCart';
 function Cart(props){
     let [wasChange,setWasChange] = useState(false)
     let login = useSelector(state =>state.login)
@@ -35,10 +36,20 @@ function Cart(props){
             if(response.n === 1){
                 // getCart()
                 setWasChange(!wasChange)
-                toast.success("Item removed")
+                toast("Item removed")
             }
         } catch (e) {
             console.log(e.response);
+        }
+    }
+    const updateAmount = async (_id,amount) =>{
+        try{
+            const url =API_URL + '/users/updateCheckout'
+            const resp = await doApiMethod(url,'PUT',{_id:_id,amount:amount})
+            setWasChange(!wasChange)
+            console.log(resp);
+        }catch(e){
+            console.log(e);
         }
     }
     console.log(total);
@@ -58,20 +69,21 @@ function Cart(props){
        </thead>
   <tbody>
         {showCart.map((item,i) =>{
-            
+            let itemAmount = cart[item._id]
             return(
-                <tr key={item._id}>   
-                 <td>{i+1}
-                 <i onClick={()=>{
-                     delOne(item._id)
-                 }} class="fa fa-trash m-2 table-icon" aria-hidden="true"></i>
+                <SingleCart updateAmount={updateAmount} delOne={delOne} itemAmount={itemAmount} item={item} i={i}/>
+                // <tr key={item._id}>   
+                //  <td>{i+1}
+                //  <i onClick={()=>{
+                //      delOne(item._id)
+                //  }} class="fa fa-trash m-2 table-icon" aria-hidden="true"></i>
 
-                 </td>
-                <td>{item.name}</td>
-                <td><img src={item.image} style={{height:"50px"}}/></td>
-                <td>{cart[item._id]}</td>
-                <td>{item.price}$</td>
-                </tr>
+                //  </td>
+                // <td>{item.name}</td>
+                // <td><img src={item.image} style={{height:"50px"}}/></td>
+                // <td>{cart[item._id]}</td>
+                // <td>{item.price}$</td>
+                // </tr>
             )
             
         })}
