@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from "redux-thunk";
 import SignUp from './comps/SignUp';
+import Checkout from './comps/Checkout';
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -43,6 +44,8 @@ function App() {
           <Route exact path="/login" component={Login}/>
           <Route exact path="/cart" component={Cart}/>
           <Route exact path="/signup" component={SignUp}/>
+          <Route exact path="/checkout" component={Checkout}/>
+
 
           <Route path="/" component={Page404}/>
         </Switch>

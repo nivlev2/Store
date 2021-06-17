@@ -10,6 +10,7 @@ header .burger {
   }
   
   header a {
+    cursor: pointer;
     color:#333;
     padding: 0 12px;
     text-decoration: none;
@@ -21,7 +22,10 @@ header .burger {
       cursor: pointer;
       color:white;
     }
-  
+    .z-i{
+      margin-top: 60px;
+      top: 42%;
+    }
     header nav { 
       z-index: 4;
       position: absolute;

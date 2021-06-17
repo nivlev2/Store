@@ -12,12 +12,12 @@ function SingleCart(props){
     },[amount])
     return(
                 <tr key={props.item._id}>   
-                 <td>{props.i+1}
+                 <td>
                  <i 
                  onClick={()=>{
                      props.delOne(props.item._id)
                  }} 
-                 className="fa fa-trash ms-2 table-icon" aria-hidden="true"></i>
+                 className="fa fa-trash table-icon" aria-hidden="true"></i>
                  </td>
                 <td>{props.item.name}</td>
                 <td><img src={props.item.image} style={{height:"50px"}}/></td>
@@ -34,7 +34,7 @@ function SingleCart(props){
                             }
                         }} className="increment w-50">+</div>
                     </div></td>
-                <td>{props.item.price}$</td>
+                <td>{props.item.price}$ ({props.item.price * amount})$</td>
                 </tr>    
 )
 }

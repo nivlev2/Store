@@ -58,6 +58,83 @@
 .App-link {
   color: #61dafb;
 }
+.input-wrapper{
+  width: 450px;
+  background: white;
+  padding: 30px;  
+  margin: 16px auto;
+}
+.input-wrapper .input-data{
+  height: 20px;
+  width: 100%;
+  position: relative;
+}
+.input-wrapper .input-data input{
+  outline: none !important;
+  height: 100%;
+  width: 100%;
+  border: none;
+  font-size: 17px;
+  border-bottom: 2px solid silver !important;
+}
+.input-data input:focus ~ label{
+  transform: translateY(-20px);
+  font-size: 15px;
+  /* color: #4158d0; */
+}
+.input-data input:focus ~ label{
+  border: 0 !important;
+  transform: translateY(-20px);
+  font-size: 15px;
+  /* color: #4158d0; */
+}
+.input-data .underline{
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 0;
+}
+.input-data .underline:before{
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: #4158d0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.input-data input:focus ~ .underline:before{
+  transform: scaleX(1);
+}
+.checkOutFormWrapper{
+  min-height: 100vh;
+  background: linear-gradient(-135deg, #f1757f, #e7c3b5);
+}
+.twoInputsInLine{
+  width: 40% !important;
+}
+.oneLineInput{
+  width: 80% !important;
+}
+.threeLineInput{
+  width: 28% !important;
+}
+
+/* .input-data input:valid ~ label{
+  transform: translateY(-20px);
+  font-size: 15px;
+} */
+
+.input-wrapper .input-data label{
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  color: grey;
+  pointer-events: none ;
+  transition: all 0.7s ease;
+}
+
 
 @keyframes App-logo-spin {
   from {

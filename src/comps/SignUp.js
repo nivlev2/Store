@@ -30,7 +30,9 @@ function SignUp(props){
             
         }
     }
-    const nameRef = register("name",{required:true,minLength:3})
+    const nameRef = register("name",{required:true,minLength:2})
+    const lastNameRef = register("lastName",{required:true,minLength:2})
+
     const emailRef = register("email",{
         required:true,  
         pattern:/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -47,10 +49,15 @@ function SignUp(props){
           <div>
               <label>Name:</label>
               <input {...nameRef} type="text" className="form-control" />
-              {errors.name && <span className="text-danger">Enter valid email</span>}
+              {errors.name && <span className="text-danger">Enter valid name</span>}
             </div>
 
-            <div>
+            <div>          <div>
+              <label>Last name:</label>
+              <input {...lastNameRef} type="text" className="form-control" />
+              {errors.lastName && <span className="text-danger">Enter valid last name</span>}
+            </div>
+
               <label>Email:</label>
               <input {...emailRef} type="text" className="form-control" />
               {errors.email && <span className="text-danger">Enter valid email</span>}

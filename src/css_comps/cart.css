@@ -5,3 +5,16 @@
 .table-icon:hover{
     color:red
 }
+.checkout-btn{
+    border: 1.5px solid orange;
+    transition: 0.8s;
+    font-family: Roboto;
+}
+
+.checkout-btn:hover{
+    background-color: rgb(253, 193, 83,0.8);
+    color: white;
+}
+
+
+

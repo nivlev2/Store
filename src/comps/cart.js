@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Actions } from '../actions';
 import { API_URL, doApiGet, doApiMethod } from '../services/apiSer';
 import '../css_comps/cart.css'
@@ -55,9 +56,10 @@ function Cart(props){
     }
     console.log(total);
     return(
-        <div>
-
-       <table className="table table-striped  mt-5">
+            <div className="container">
+                <div className="row">
+        <div className="col-lg-9">
+       <table className="table table-striped  mt-5 ">
        <thead className="bg-warning text-light">
          <tr>
            <th>#</th>
@@ -91,6 +93,15 @@ function Cart(props){
         </tbody>
       </table>
       </div>
+      <div className="col-lg-3 mt-5  border-left 1px">
+          <h4>Subtotal:{total}$ ({showCart.length} items) </h4>
+          <Link to='/checkout'>
+            <button className="checkout-btn btn btn-light mt-3"> Proceed to Checkout</button>
+          </Link>
+      </div>
+      </div>
+      </div>
+
 
     )
 }
