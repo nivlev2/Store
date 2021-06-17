@@ -17,7 +17,7 @@ function SingleCart(props){
                  onClick={()=>{
                      props.delOne(props.item._id)
                  }} 
-                 class="fa fa-trash ms-2 table-icon" aria-hidden="true"></i>
+                 className="fa fa-trash ms-2 table-icon" aria-hidden="true"></i>
                  </td>
                 <td>{props.item.name}</td>
                 <td><img src={props.item.image} style={{height:"50px"}}/></td>

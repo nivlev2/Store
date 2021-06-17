@@ -72,7 +72,7 @@ function Cart(props){
         {showCart.map((item,i) =>{
             let itemAmount = cart[item._id]
             return(
-                <SingleCart updateAmount={updateAmount} delOne={delOne} itemAmount={itemAmount} item={item} i={i}/>
+                <SingleCart key={item._id} updateAmount={updateAmount} delOne={delOne} itemAmount={itemAmount} item={item} i={i}/>
                 // <tr key={item._id}>   
                 //  <td>{i+1}
                 //  <i onClick={()=>{

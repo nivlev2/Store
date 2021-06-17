@@ -58,7 +58,7 @@ function NavBar(props) {
           <Link to="/">
             <i className="fa fa-home h3 icon" aria-hidden="true" ></i>
           </Link>
-          {login?<Link><i onClick={logOut} className="fa fa-sign-out h3 icon " aria-hidden="true"></i></Link>
+          {login?<a><i onClick={logOut} className="fa fa-sign-out h3 icon " aria-hidden="true"></i></a>
             : 
             <Link to="/login">
             <i className="fa fa-user-circle-o h3 icon" aria-hidden="true"></i>
