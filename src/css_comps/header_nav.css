@@ -22,6 +22,11 @@ header .burger {
       cursor: pointer;
       color:white;
     }
+    .checkOut-form-form{
+      width: 100%;
+      margin: 5% auto;
+    }
+    
     .z-i{
       margin-top: 60px;
       top: 42%;

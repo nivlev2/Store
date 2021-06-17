@@ -1,14 +1,24 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useRef} from 'react';
 import { Actions } from '../actions';
 import { useSelector,useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { slice } from 'lodash';
+import {useForm} from 'react-hook-form'
 
 function Checkout(props){
     let login = useSelector(state => state.login)
-    let showCart = useSelector(state => state.showCart)
-    let cart = useSelector(state => state.cartList)
-    let total = useSelector(state => state.total)
-
+    let cvnRef = useRef()
+    const {register , handleSubmit ,  formState: { errors } ,setValue} = useForm();
+    const nameRef = register("name",{required:true,minLength:2})
+    const lastNameRef = register("lastName",{required:true,minLength:2})
+    const addressRef = register("address",{required:true,minLength:2})
+    const cityRef = register("city",{required:true,minLength:2})
+    const stateRef = register("state",{required:true,minLength:2})
+    const zipRef = register("zip",{required:true,minLength:2})
+    const cartRef = register("cart",{required:true,minLength:16,maxLength:16})
+    const ccvRef = register("CCV",{required:true,minLength:3,maxLength:3})
+    const expRef = register("EXP",{required:true})
+    let refi = useRef()
     let history = useHistory()
     let dispatch = useDispatch()
     useEffect(() => {
@@ -31,137 +41,114 @@ function Checkout(props){
             console.log(err);
         }
     }
-
+    const onSubForm = (formData)=>{
+      console.log(formData);
+    }
+    const handleChange = (e,maxInput,valToSet) => {
+      const val = e.target.value
+      const max = maxInput
+      const maxLength = max.toString()
+      const newVal = val < max ? val : parseInt(val.toString().substring(0, maxLength))
+      setValue(valToSet, newVal, { shouldDirty: true })
+  }  
     return(
         <div>
-        <h1>Add new card to your biz:</h1>
-        <div className="row">
-        <form  className="row col-md-8">
-          <div className="col-sm-6">
-            <label>Name:</label>
-            <input  type="text" className="form-control mt-2" />
-     
-          </div>
-          <div className="col-sm-6">
-            <label>Last name</label>
-            <input  type="text" className="form-control mt-2" />
-     
-          </div>
-
-  
-          <div className="col-sm-12">
-            <label>Address</label>
-            <input   type="text" className="form-control mt-2" />
-      
-          </div>
-          <div className="col-sm-4">
-            <label>City</label>
-            <input   type="text" className="form-control mt-2" />
-       
-          </div>
-          <div className="col-sm-4">
-            <label>Phone</label>
-            <input   type="text" className="form-control mt-2" />
-       
-          </div>
-
-          <div className="col-sm-4">
-            <label>Zip</label>
-            <input   type="text" className="form-control mt-2" />
-        
-          </div>
-          <div className="col-sm-12">
-            <label>Credit cart NO</label>
-            <input   type="text" className="form-control mt-2" />
-      
-          </div>
-
-          <div className="col-sm-6">
-            <label>EXP</label>
-            <input  type="date" className="form-control mt-2" />
-          </div>
-          <div className="col-sm-6">
-            <label>CCV</label>
-            <input  type="text" className="form-control mt-2" />
-          </div>
-            <div className="col-12 text-center">
-            <button className="btn btn-info  mt-4">Add new biz card</button>
-          </div>
+          <form className="checkOut-form-form" onSubmit={handleSubmit(onSubForm)}>
           <div className="checkOutFormWrapper">
             <div className="row">   
-            <h1 className="my-4">Add new card to your biz:</h1>
+            <h3 className="my-4"><i class="fa fa-truck" aria-hidden="true"></i> Shipping details</h3>
             <div className="input-wrapper twoInputsInLine">
             <div className="input-data">
-              <input type="text" />
+              <input {...nameRef} type="text" />
               <label htmlFor="">First Name</label>
               <div class="underline"></div>
+              {errors.name && <span className="text-danger">Enter valid name</span>}
             </div>
           </div>
           <div className="input-wrapper twoInputsInLine">
             <div className="input-data ">
-              <input type="text" />
+              <input {...lastNameRef} type="text"   maxLength="2"/>
               <label htmlFor="">Last Name</label>
               <div class="underline"></div>
+              {errors.lastName && <span className="text-danger">Enter valid last name</span>}
+
             </div>
           </div>
           </div>
           <div className="input-wrapper oneLineInput">
             <div className="input-data ">
-              <input type="text" />
-              <label htmlFor="">name</label>
+              <input {...addressRef} type="text" />
+              <label htmlFor="">Address</label>
               <div class="underline"></div>
+              {errors.address && <span className="text-danger">Enter valid address</span>}
+
             </div>
           </div>
           <div className="row">
           <div className="input-wrapper threeLineInput">
             <div className="input-data ">
-              <input type="text" />
-              <label htmlFor="">name</label>
+              <input {...cityRef} type="text" />
+              <label htmlFor="">City</label>
               <div class="underline"></div>
+              {errors.city && <span className="text-danger">Enter valid city</span>}
+
             </div>
           </div>
           <div className="input-wrapper threeLineInput">
             <div className="input-data ">
-              <input type="text" />
-              <label htmlFor="">name</label>
+              <input {...stateRef} type="text" />
+              <label htmlFor="">State</label>
               <div class="underline"></div>
+              {errors.state && <span className="text-danger">Enter valid state</span>}
             </div>
           </div>
           <div className="input-wrapper threeLineInput">
             <div className="input-data ">
-              <input type="text" />
-              <label htmlFor="">name</label>
+              <input {...zipRef} type="number" maxLength="8" onInput={(e)=>{
+                handleChange(e,7,"zip")
+              }}/>
+              <label htmlFor="">Zip</label>
+              {errors.name && <span className="text-danger">Enter valid zip</span>}
               <div class="underline"></div>
             </div>
           </div>
           </div>
-          <h1 className="my-4">Add new card to your biz:</h1>
+          <h3 className="my-4"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Payment details</h3>
           <div className="input-wrapper oneLineInput">
             <div className="input-data ">
-              <input type="text" />
-              <label htmlFor="">name</label>
+              <input {...cartRef} type="text" 
+              onInput={(e)=>{
+                handleChange(e,16,"cart")
+              }}/>
+              <label htmlFor="">Credit cart NO</label>
               <div class="underline"></div>
+              {errors.cart && <span className="text-danger">Enter valid Cart</span>}
+
             </div>
             
           </div>
           <div className="row">   
             <div className="input-wrapper twoInputsInLine">
             <div className="input-data">
-              <input type="text" />
-              <label htmlFor="">First Name</label>
+              <input {...expRef} type="date" />
+              <label htmlFor="">EXP</label>
               <div class="underline"></div>
+              {errors.EXP && <span className="text-danger">Enter valid Date</span>}
+
             </div>
           </div>
           <div className="input-wrapper twoInputsInLine">
             <div className="input-data ">
-              <input type="text" />
-              <label htmlFor="">Last Name</label>
+              <input {...ccvRef} type="number" onInput={(e)=>{
+                handleChange(e,3,"CCV")
+              }}/>
+              <label htmlFor="">CCV</label>
               <div class="underline"></div>
+              {errors.CCV && <span className="text-danger">Enter valid CCV</span>}
+
             </div>
           </div>
           </div>
-          </div>
-        </form>
         {/* <div className="input-wrapper">
             <div className="input-data">
               <input type="text" />
@@ -170,6 +157,8 @@ function Checkout(props){
           </div> */}
 
       </div>
+      <button className="btn btn-info">Send</button>
+      </form>
       </div>
       )
 }
