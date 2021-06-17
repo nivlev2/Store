@@ -1,13 +1,13 @@
-import React,{useEffect, useRef} from 'react';
+import React,{useEffect,} from 'react';
 import { Actions } from '../actions';
 import { useSelector,useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { slice } from 'lodash';
 import {useForm} from 'react-hook-form'
+import { API_URL, doApiGet, doApiMethod } from '../services/apiSer';
+import { toast } from 'react-toastify';
 
 function Checkout(props){
     let login = useSelector(state => state.login)
-    let cvnRef = useRef()
     const {register , handleSubmit ,  formState: { errors } ,setValue} = useForm();
     const nameRef = register("name",{required:true,minLength:2})
     const lastNameRef = register("lastName",{required:true,minLength:2})
@@ -18,7 +18,6 @@ function Checkout(props){
     const cartRef = register("cart",{required:true,minLength:16,maxLength:16})
     const ccvRef = register("CCV",{required:true,minLength:3,maxLength:3})
     const expRef = register("EXP",{required:true})
-    let refi = useRef()
     let history = useHistory()
     let dispatch = useDispatch()
     useEffect(() => {
@@ -30,7 +29,6 @@ function Checkout(props){
     const getCart =  () =>{
         try{
             if(login){
-                //reset userCart
             dispatch(Actions.getUserCart())
             }else{
                 dispatch(Actions.resetUserCart())
@@ -41,10 +39,28 @@ function Checkout(props){
             console.log(err);
         }
     }
-    const onSubForm = (formData)=>{
-      console.log(formData);
+    const onSubForm = async (formData)=>{
+      try{
+        await pay()
+      }catch(e){
+        toast.error("there are a promblem try again later")
+      }
     }
-    const handleChange = (e,maxInput,valToSet) => {
+    const pay = async ()=>{
+      try{
+        let url = API_URL +'/users/checkout'
+        let resp = await doApiMethod(url,"PUT",{emptyCart:{}})
+        if(resp.n ===1){
+          toast.success("Purchase Complete")
+          dispatch(Actions.resetUserCart())
+          history.push('/cart')
+        }
+      } 
+      catch(e){
+        throw (e)
+      }
+    }
+  const handleChange = (e,maxInput,valToSet) => {
       const val = e.target.value
       const max = maxInput
       const maxLength = max.toString()
@@ -149,16 +165,10 @@ function Checkout(props){
             </div>
           </div>
           </div>
-        {/* <div className="input-wrapper">
-            <div className="input-data">
-              <input type="text" />
-              <label htmlFor="">name</label>
-            </div>
-          </div> */}
-
       </div>
       <button className="btn btn-info">Send</button>
       </form>
+      <button onClick={pay}>Pay</button>
       </div>
       )
 }

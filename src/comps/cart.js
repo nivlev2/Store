@@ -30,7 +30,7 @@ function Cart(props){
             console.log("from catch in cart");
             console.log(err);
         }
-    }
+    }  
     const delOne = async(_id) =>{
         try {
             const url = API_URL +'/users/deleteOne'
