@@ -54,7 +54,31 @@ function Cart(props){
             console.log(e);
         }
     }
-    console.log(total);
+    if(!login){
+        return(
+            <div>
+        <div className="notLoginCart">
+        </div>
+            <div className="container z-i ">
+            <h4>You have to log in in order to add item to your cart</h4>
+                <Link className="btn btn-primary" to="/login">Click here to Login</Link>
+        </div>
+        </div>
+        )
+    }
+    if(total === 0){
+        return(
+            <div>
+            <div className="container-empty-cart">
+            </div>
+            <div className="z-i-2">
+                <h2 className="empty-cart-title mb-5">Your cart is empty</h2>
+                <Link to="/" className="btn btn-primary">Cick here and start shopping</Link>
+
+            </div>
+            </div>
+        )
+    }
     return(
             <div className="container">
                 <div className="row">
