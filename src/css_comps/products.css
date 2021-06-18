@@ -198,3 +198,34 @@ a
 .error-text{
     text-align: center;
 }
+
+#popupWrapper{
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+  }
+  #popup{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    text-align: center;
+    width: 100%;
+    max-width:300px ;
+    margin:10% auto;
+    padding: 20px;
+    background-color: rgb(241, 201, 125);
+    position: relative;
+    border-radius: 10px;
+    display: block;
+    color: white;
+    z-index: 4;
+  }
+  #popupClose{
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    cursor: pointer;
+  }
+  

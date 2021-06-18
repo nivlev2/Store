@@ -3,11 +3,13 @@ import {Actions} from '../actions/index'
 import {toast} from 'react-toastify'
 import {useDispatch,useSelector} from 'react-redux'
 import { API_URL, doApiGet, doApiMethod } from '../services/apiSer';
+import { Link } from 'react-router-dom';
 import SingleProduct from './SingleProduct';
 import '../css_comps/products.css'
 function ProductsList(props){
     let [page,setPage] = useState(0)
     let [amountPages,setAmountPages] = useState('')
+    let [popUp,SetPopUp] = useState(false)
     const error = useSelector(state =>state.error)
     console.log(error);
     let dispatch = useDispatch()
@@ -34,6 +36,14 @@ function ProductsList(props){
             console.log(err);
         }
     }
+    
+    const closePopUp = () => {
+        SetPopUp(false)
+    } 
+    const openPopUp = () =>{
+        SetPopUp(true)
+    }
+
     let prods_ar = useSelector(state => state.products)
     if(error){
         return (
@@ -46,12 +56,21 @@ function ProductsList(props){
     }
     return(
         <div className="container">
+
             <div className="row">
                 {prods_ar.map(item =>{
-                    return <SingleProduct key={item._id} addToCart={addToCart} item={item}/>
+                    return <SingleProduct openPopUp={openPopUp} key={item._id} addToCart={addToCart} item={item}/>
 
                 })}
-            </div> 
+            </div>
+            {popUp && <div onClick={closePopUp} id="popupWrapper">
+                     <div id="popup"> 
+                     <div onClick={closePopUp} id="popupClose">X</div>
+                      <div id="popupContent"> 
+                      <h3 className="mb-4">Login in order to start shopping</h3>
+                       <Link onClick={closePopUp} className={`btn btn-primary`} to="/login">Click here to login</Link> </div>
+                       </div>
+                       </div>} 
             <div className="d-flex justify-content-center align-center">               
             {[...Array(amountPages)].map((item,i) =>{
                     return (

@@ -1,8 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
+import {useSelector} from 'react-redux'
 
 function SingleProduct(props){
     let [amount,setAmount] = useState(1)
+    const login = useSelector(state =>state.login)
     const setProdAmount = (operator) =>{
         setAmount(amount + operator)
     }
@@ -36,7 +38,11 @@ function SingleProduct(props){
                     </div>
                     <i 
                     onClick={()=>{
-                        props.addToCart(props.item._id,amount)
+                        if(!login){
+                            props.openPopUp() 
+                        }else{
+                            props.addToCart(props.item._id,amount)
+                        }
                     }} 
                     className="fa fa-shopping-cart h3"></i>
                 </div>
