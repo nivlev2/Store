@@ -6,9 +6,10 @@ import { API_URL, doApiGet, doApiMethod } from '../services/apiSer';
 import SingleProduct from './SingleProduct';
 import '../css_comps/products.css'
 function ProductsList(props){
-    let userName = useSelector(state => state.userName)
     let [page,setPage] = useState(0)
     let [amountPages,setAmountPages] = useState('')
+    const error = useSelector(state =>state.error)
+    console.log(error);
     let dispatch = useDispatch()
     const pagesAmount = async () =>{
         let url = API_URL + '/products/count'
@@ -29,36 +30,24 @@ function ProductsList(props){
                 toast("item added to your cart")
             }
         }catch(err){
+            console.log("from catch here");
             console.log(err);
         }
     }
     let prods_ar = useSelector(state => state.products)
+    if(error){
+        return (
+            <div className="errorPage">
+                <div className="error-text">
+                <h3 className=" text-light mt-5">There are a promblem please come black later</h3>
+                </div>
+            </div>
+        )
+    }
     return(
         <div className="container">
             <div className="row">
                 {prods_ar.map(item =>{
-                    // console.log("run");
-                    // return(
-                    // <div className="product-card" key={item._id}>
-                    // {/* <div class="badge">Hot</div> */}
-                    // <div className="product-tumb">
-                    //     <img src={item.image} alt=""/>
-                    // </div>
-                    // <div className="product-details">
-                    //     {/* <span class="product-catagory">Women,bag</span> */}
-                    //     <h4>{item.name}</h4>
-                    //     <div className="product-bottom-details">
-                    //         <div className="product-price">{item.price}$</div>
-                    //         <div className="product-links">
-                    //             {/* <a href=""><i class="fa fa-heart"></i></a> */}
-                    //             <i onClick={()=>{
-                    //                 addToCart(item._id,1)
-                    //             }} className="fa fa-shopping-cart h3"></i>
-                    //         </div>
-                    //     </div>
-                    // </div>
-                    // </div>
-                    // )
                     return <SingleProduct key={item._id} addToCart={addToCart} item={item}/>
 
                 })}

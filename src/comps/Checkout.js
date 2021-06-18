@@ -1,4 +1,4 @@
-import React,{useEffect,} from 'react';
+import React,{useEffect,useState} from 'react';
 import { Actions } from '../actions';
 import { useSelector,useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 
 function Checkout(props){
     let login = useSelector(state => state.login)
+    let total = useSelector(state => state.total)
     const {register , handleSubmit ,  formState: { errors } ,setValue} = useForm();
     const nameRef = register("name",{required:true,minLength:2})
     const lastNameRef = register("lastName",{required:true,minLength:2})
@@ -18,6 +19,7 @@ function Checkout(props){
     const cartRef = register("cart",{required:true,minLength:16,maxLength:16})
     const ccvRef = register("CCV",{required:true,minLength:3,maxLength:3})
     const expRef = register("EXP",{required:true})
+    const [inPayment,setInPayment] = useState(false)
     let history = useHistory()
     let dispatch = useDispatch()
     useEffect(() => {
@@ -51,9 +53,13 @@ function Checkout(props){
         let url = API_URL +'/users/checkout'
         let resp = await doApiMethod(url,"PUT",{emptyCart:{}})
         if(resp.n ===1){
-          toast.success("Purchase Complete")
-          dispatch(Actions.resetUserCart())
-          history.push('/cart')
+          setInPayment(true)
+          setTimeout(()=>{
+            setInPayment(false)
+            toast.success("Purchase Complete")
+            dispatch(Actions.resetUserCart())
+            history.push('/cart')
+          },3000)
         }
       } 
       catch(e){
@@ -165,10 +171,12 @@ function Checkout(props){
             </div>
           </div>
           </div>
+        <h4 className="my-4">Total to pay: {total}$</h4>
+        {inPayment && <div className="center-payment"><i class="fa fa-shield" aria-hidden="true"></i>
+<div class="dot-flashing"></div></div>}
       </div>
-      <button className="btn btn-info">Send</button>
+      <button className="btn btn-primary">Pay Now</button>
       </form>
-      <button onClick={pay}>Pay</button>
       </div>
       )
 }

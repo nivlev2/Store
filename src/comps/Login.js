@@ -25,7 +25,11 @@ function Login(props){
         toast.success('Logged in successfully')
         history.push('/')
         }catch(e){
-          toast.error("Email or password wrong")
+          if(e.response){
+           return toast.error("Email or password wrong")
+          }
+         return toast.error("There are promblem please try again later")
+
         }
     }
     let emailRef = register("email",{

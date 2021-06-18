@@ -8,6 +8,7 @@ export const Actions ={
           console.log(response);
           dispatch({type:"GET_PRODUCTS",payload:response})
           } catch (err) {
+               dispatch({type:"NETWORK_ERR"})
                console.log(err);
           }
      },

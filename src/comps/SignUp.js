@@ -21,10 +21,11 @@ function SignUp(props){
                 toast.success("Welcome " + resp.name + " Login now")
                 history.push('/login')
             }
-            console.log(resp);
         } catch (e) {
-            if(e.response.data.code === 11000){
-               return toast.info('You email already exist, log in or try with diffrent email')
+            if(e.response){
+              if(e.response.data.code === 11000){
+                return toast.info('You email already exist, log in or try with diffrent email')
+              }
             }
             return toast.error("There is a problem, please try again later")
             

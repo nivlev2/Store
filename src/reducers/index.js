@@ -4,7 +4,8 @@ const initState = {
     showCart:[],
     total:0,
     cartList:{},
-    products:[]
+    products:[],
+    error:false
 }
 
 export const reducer = (state = {...initState},action) =>{
@@ -19,6 +20,8 @@ export const reducer = (state = {...initState},action) =>{
             return {...state,login:true}
         case 'REMOVE_USER':
             return {...state,login:false}
+        case "NETWORK_ERR":
+            return {...state,error:true}
         default:
             return state
     }
