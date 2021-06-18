@@ -26,6 +26,9 @@ header .burger {
       width: 100%;
       margin: 5% auto;
     }
+    .z-i-2{
+      width: 80%;
+    }
     
     .z-i{
       margin-top: 60px;

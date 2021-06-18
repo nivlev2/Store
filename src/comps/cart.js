@@ -73,8 +73,7 @@ function Cart(props){
             </div>
             <div className="z-i-2">
                 <h2 className="empty-cart-title mb-5">Your cart is empty</h2>
-                <Link to="/" className="btn btn-primary">Cick here and start shopping</Link>
-
+                <Link to="/" className="btn btn-light">Cick here and start shopping</Link>
             </div>
             </div>
         )
@@ -99,18 +98,6 @@ function Cart(props){
             let itemAmount = cart[item._id]
             return(
                 <SingleCart key={item._id} updateAmount={updateAmount} delOne={delOne} itemAmount={itemAmount} item={item} i={i}/>
-                // <tr key={item._id}>   
-                //  <td>{i+1}
-                //  <i onClick={()=>{
-                //      delOne(item._id)
-                //  }} class="fa fa-trash m-2 table-icon" aria-hidden="true"></i>
-
-                //  </td>
-                // <td>{item.name}</td>
-                // <td><img src={item.image} style={{height:"50px"}}/></td>
-                // <td>{cart[item._id]}</td>
-                // <td>{item.price}$</td>
-                // </tr>
             )
             
         })}

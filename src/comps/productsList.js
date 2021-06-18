@@ -32,8 +32,7 @@ function ProductsList(props){
                 toast("item added to your cart")
             }
         }catch(err){
-            console.log("from catch here");
-            console.log(err);
+            toast.error("there is a promblem try again later")
         }
     }
     
