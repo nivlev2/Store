@@ -29,7 +29,9 @@ header .burger {
     .z-i-2{
       width: 80%;
     }
-    
+    .errorPage{
+      background-position: 55% 45% !important;
+    }
     .z-i{
       margin-top: 60px;
       top: 42%;
