@@ -7,6 +7,25 @@
   pointer-events: none;
 }
 
+.home-header{
+  margin-top: 30px;
+  height: 300px;
+  background: #3E5151;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #DECBA4, #3E5151);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #DECBA4, #3E5151); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-title{
+  display: block;
+  text-align: center;
+  font-family: 'Dela Gothic One', cursive;
+  color: white;
+}
+.sort-label{
+  float:left;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

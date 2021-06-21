@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Header from './Header';
 import ProductsList from './productsList';
 
 function Home(props){
+    let [sortQ,setSortQ] = useState('_id')
+    let [searchQ,setSearchQ] = useState('')
+    console.log(sortQ);
     return(
         <div>
-            <ProductsList/>
+            <Header setSearchQ={setSearchQ} setSortQ={setSortQ}/>
+            <ProductsList sortQ={sortQ} searchQ={searchQ}/>
         </div> 
     )
 }

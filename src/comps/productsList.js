@@ -20,8 +20,8 @@ function ProductsList(props){
     }
     useEffect(()=>{
         pagesAmount()
-        dispatch(Actions.getProds(page))
-    },[page])
+        dispatch(Actions.getProds(page,props.sortQ,props.searchQ))
+    },[page,props.sortQ,props.searchQ])
     const addToCart = async (_id,amount) =>{
         const num = amount
         try{
@@ -71,7 +71,7 @@ function ProductsList(props){
                        </div>
                        </div>} 
             <div className="d-flex justify-content-center align-center">               
-            {[...Array(amountPages)].map((item,i) =>{
+            {prods_ar.length > 5 && [...Array(amountPages)].map((item,i) =>{
                     return (
                     <div className="pages"key={i} onClick={() => {
                         setPage(i)

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Actions } from '../actions';
-import { API_URL, doApiGet, doApiMethod } from '../services/apiSer';
+import { API_URL, doApiMethod } from '../services/apiSer';
 import '../css_comps/cart.css'
 import { toast } from 'react-toastify';
 import SingleCart from './SingleCart';

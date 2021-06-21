@@ -1,9 +1,9 @@
 import { doApiGet,API_URL, doApiMethod } from "../services/apiSer"
 
 export const Actions ={
-     getProds: (page) => async dispatch =>{
+     getProds: (page,sortQ,searchQ) => async dispatch =>{
           try {
-          let url = API_URL + '/products?page=' + page
+          let url = API_URL + '/products?page=' + page + '&sort=' + sortQ + '&search=' + searchQ
           const response = await doApiGet(url)
           console.log(response);
           dispatch({type:"GET_PRODUCTS",payload:response})
@@ -11,6 +11,12 @@ export const Actions ={
                dispatch({type:"NETWORK_ERR"})
                console.log(err);
           }
+     },
+     sortProducts:(sortedAr) =>{
+          return {type:"SORT_PRODUCTS",payload:sortedAr}
+     },
+     searchProducts:(searchQ) =>{
+          return {type:"SEARCH_PRODUCTS"}
      },
      getUserCart: () => async dispatch =>{
           try {

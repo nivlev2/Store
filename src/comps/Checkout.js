@@ -3,7 +3,7 @@ import { Actions } from '../actions';
 import { useSelector,useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {useForm} from 'react-hook-form'
-import { API_URL, doApiGet, doApiMethod } from '../services/apiSer';
+import { API_URL, doApiMethod } from '../services/apiSer';
 import { toast } from 'react-toastify';
 
 function Checkout(props){
