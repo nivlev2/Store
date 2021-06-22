@@ -58,7 +58,11 @@ function NavBar(props) {
           <Link to="/">
             <i className="fa fa-home h3 icon" aria-hidden="true" ></i>
           </Link>
-          {login?<i onClick={logOut} className="fa fa-sign-out h3 icon " aria-hidden="true"></i>
+          {login? <React.Fragment>
+            <Link to="/userInfo">
+            <i className="fa fa-user-circle-o h3 icon" aria-hidden="true"></i>
+          </Link>
+             <i onClick={logOut} className="fa fa-sign-out h3 icon " aria-hidden="true"></i></React.Fragment>
             : 
             <Link to="/login">
             <i className="fa fa-user-circle-o h3 icon" aria-hidden="true"></i>

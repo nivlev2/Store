@@ -70,11 +70,13 @@ function ProductsList(props){
                        <Link onClick={closePopUp} className={`btn btn-primary`} to="/login">Click here to login</Link> </div>
                        </div>
                        </div>} 
-            <div className="d-flex justify-content-center align-center">               
-            {prods_ar.length > 5 && [...Array(amountPages)].map((item,i) =>{
+            <div className="d-flex justify-content-center align-center">
+                               
+            {props.searchQ != ""  && prods_ar.length < 5 ? <React.Fragment></React.Fragment> : [...Array(amountPages)].map((item,i) =>{
                     return (
                     <div className="pages"key={i} onClick={() => {
                         setPage(i)
+                        window.scrollTo(0, 200)
                     }}
                     >{i+1}</div>)
                 })}

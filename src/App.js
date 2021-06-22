@@ -14,6 +14,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from "redux-thunk";
 import SignUp from './comps/SignUp';
 import Checkout from './comps/Checkout';
+import UserInfo from './comps/UserInfo';
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -45,8 +46,7 @@ function App() {
           <Route exact path="/cart" component={Cart}/>
           <Route exact path="/signup" component={SignUp}/>
           <Route exact path="/checkout" component={Checkout}/>
-
-
+          <Route exact path="/userInfo" component={UserInfo}/>
           <Route path="/" component={Page404}/>
         </Switch>
       </main>

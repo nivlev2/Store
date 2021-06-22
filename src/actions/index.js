@@ -12,12 +12,6 @@ export const Actions ={
                console.log(err);
           }
      },
-     sortProducts:(sortedAr) =>{
-          return {type:"SORT_PRODUCTS",payload:sortedAr}
-     },
-     searchProducts:(searchQ) =>{
-          return {type:"SEARCH_PRODUCTS"}
-     },
      getUserCart: () => async dispatch =>{
           try {
                let url = API_URL + '/users/userInfo'
@@ -34,6 +28,17 @@ export const Actions ={
                console.log(err);
                throw(err)
           }     
+     },
+     getUserInfo:()=> async dispatch =>{
+          try{
+               let url = API_URL + '/users/userInfo'
+               const response = await doApiMethod(url,'GET')
+               let url2 = API_URL + '/users/userOrders'
+               const response2 = await doApiMethod(url2,'GET')
+               dispatch({type:"GET_USER_DETAILS",payload:{user:response,lastOrders:response2}})
+          }catch(e){
+               throw e
+          }
      },
      resetUserCart:() =>{
           return {type:"RESET_USER_CART"}
