@@ -1,21 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-        let item = {milk:1}
-        localStorage.setItem("item",JSON.stringify(item))
-        let item1 = localStorage["item"]
-        let item2 = JSON.parse(localStorage["item"])
-        console.log("item1----",item1);
-        console.log("item2-----",item2);
-        console.log(typeof(item2));
-        console.log(item1);
-    </script>
-</body>
-</html>
+<div className="container">
+    <div className="row">
+        <div className="col sm-7 mx-auto mt-5">
+            <h3>Hey {user.name} {user.lastName}</h3>
+            <h4 className="mt-5"> Your last orders:</h4>
+            {lastOrders.map((order,i) =>{
+                let total = 0
+                return(
+                    <div className="col-sm-7 border p-2">
+                        <h4 className="text-danger">{i+1}:</h4>
+                        { order.map((item,z)=>{
+                            let amount =  user.lastOrders[i][item._id]
+                            total += amount * item.price
+                    return(
+                        <div className="shadow">
+                        <h4>{item.name}</h4>
+                        <img src={item.image} alt={item.name} className="img-responsive w-25"/>
+                        <div>{item.price}$ amount:{amount} total:{item.price * amount}$</div>
+                        </div>
+                    )})
+}                             <h4 className="mt-2">Order total :{total}$</h4>
+                    </div>
+                
+
+                )
+            })}
+        </div>
+    </div>
+</div>

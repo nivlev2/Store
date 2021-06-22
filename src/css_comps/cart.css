@@ -53,3 +53,53 @@
     text-align: center;  
 }
 
+.last-Order{
+    float: left;
+    padding: 10px;
+    width: 40%;
+    margin: 20px ;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 4px 8px 20px rgba(0,0,0, 0.7);
+    /* margin: 10px; */
+}
+.last-Order-details{
+    font-weight: bold;
+    margin-top: 5px;
+}
+.last-Order:hover{
+    box-shadow: 2px 4px 20px rgba(0,0,0, 0.4);
+}
+.last-Order-img{
+    height: 80px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+}
+.last-Order-flex{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-auto-rows: auto;
+  }
+.last-Order-item{
+    padding: 8px;
+    margin: 5px;
+}
+.last-Order-total{
+    color:black;
+    display: block;
+}
+
+@media (max-width:1000px){
+    .last-Order-flex{
+        grid-template-columns: repeat(4,1fr);
+    }
+    .last-Order{
+        margin: 20px auto;
+        float: none;
+        padding: 10px;
+        width: 100%;
+        /* margin: 10px; */
+    }
+    
+}
