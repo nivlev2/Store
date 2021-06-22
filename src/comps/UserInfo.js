@@ -17,13 +17,23 @@ function UserInfo(props){
     useEffect(()=>{
         dispatch(Actions.getUserInfo())
     },[])
+    if(lastOrders.length < 1){
+        return(
+            <div className="container">
+            <div className="home-header">
+            <h1 className="home-title">Welcome {user.name} {user.lastName}
+            <br/> You dont have orders yet :</h1>
+            </div>
+            </div>
+        )
+    }
     return(
         <div className="container">
                     <div className="home-header">
                     <h1 className="home-title">Welcome {user.name} {user.lastName}
                     <br/> here your last orders :</h1>
                     </div>
-
+            
             <div className="mx-auto">
                 <div className="">
                     {lastOrders.map((order,i) =>{
