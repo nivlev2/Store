@@ -16,8 +16,10 @@ export const Actions ={
           try {
                let url = API_URL + '/users/userInfo'
                const response = await doApiMethod(url,'GET')
+               localStorage.setItem("cart",JSON.stringify(response.cart))
                let url2 = API_URL + '/users/cart'
                const showCart = await doApiMethod(url2,'GET')
+               localStorage.setItem("showCart",JSON.stringify(showCart))
                let num = 0;
                for(let item of showCart){
                     let tempSum = item.price * response.cart[item._id]
@@ -25,7 +27,6 @@ export const Actions ={
                }
                dispatch({type:"GET_USER_CART",payload:{cart:response.cart,showCart:showCart,total:num}})
           } catch (err) {
-               console.log(err);
                throw(err)
           }     
      },
@@ -35,6 +36,9 @@ export const Actions ={
                const response = await doApiMethod(url,'GET')
                let url2 = API_URL + '/users/userOrders'
                const response2 = await doApiMethod(url2,'GET')
+               console.log(response2);
+               localStorage.setItem("user",JSON.stringify(response))
+               localStorage.setItem("lastOrders",JSON.stringify(response2))
                dispatch({type:"GET_USER_DETAILS",payload:{user:response,lastOrders:response2}})
           }catch(e){
                throw e
@@ -44,10 +48,14 @@ export const Actions ={
           return {type:"RESET_USER_CART"}
      },
      setUserLogin: (userName) => {
+          localStorage.setItem('login',true)
           return {type:"LOGGED_IN"}
      },
      removeUser: () =>{
-          console.log('removed');
+          localStorage.removeItem("lastOrders")
+          localStorage.removeItem("cartList")
+          localStorage.removeItem("showCart")
+          localStorage.removeItem('login')
           localStorage.removeItem('token')
           return {type:"REMOVE_USER"}
      }

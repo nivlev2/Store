@@ -17,6 +17,8 @@ function UserInfo(props){
     useEffect(()=>{
         dispatch(Actions.getUserInfo())
     },[])
+    let checker = JSON.parse(localStorage["lastOrders"])
+    console.log(checker);
     if(lastOrders.length < 1){
         return(
             <div className="container">

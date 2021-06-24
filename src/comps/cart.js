@@ -66,7 +66,7 @@ function Cart(props){
         </div>
         )
     }
-    if(total === 0){
+    if(showCart.length === 0){
         return(
             <div>
             <div className="container-empty-cart">

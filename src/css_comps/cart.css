@@ -90,16 +90,40 @@
     display: block;
 }
 
+@media (max-width:1400px){
+    .last-Order{
+        margin: 20px auto;
+        float: none;
+        width: 60%;
+    }
+    .last-Order-flex{
+        /* grid-template-columns: repeat(4,1fr); */
+    }
+
+}
+
 @media (max-width:1000px){
     .last-Order-flex{
-        grid-template-columns: repeat(4,1fr);
+        grid-template-columns: repeat(3,1fr);
     }
     .last-Order{
         margin: 20px auto;
         float: none;
         padding: 10px;
-        width: 100%;
+        width: 70%;
         /* margin: 10px; */
     }
     
 }
+@media (max-width:650px){
+    .last-Order{
+        width: 100%;
+    }
+}
+
+@media (max-width:350px){
+    .last-Order-flex{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
