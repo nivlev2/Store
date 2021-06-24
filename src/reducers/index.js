@@ -4,14 +4,14 @@ const cartList = localStorage["cart"] ? JSON.parse(localStorage["cart"]): {};
 const showCart = localStorage["showCart"] ? JSON.parse(localStorage["showCart"]):[];
 const lastOrders = localStorage["lastOrders"] ? JSON.parse(localStorage["lastOrders"]):[]
 const user = localStorage["user"] ? JSON.parse(localStorage["user"]):{}
-
+const total = localStorage["total"] ? localStorage["total"]:0
 console.log(cartList);
 console.log(showCart);
 console.log(login);
 const initState = {
     login:login,
     showCart:showCart,
-    total:0,
+    total:total,
     cartList:cartList,
     products:[],
     error:false,

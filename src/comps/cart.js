@@ -54,6 +54,13 @@ function Cart(props){
             console.log(e);
         }
     }
+    const totalItems = () =>{
+        let total = 0;
+        for (let key in cart){
+            total += cart[key]
+        }
+        return total
+    }
     if(!login){
         return(
             <div>
@@ -105,7 +112,7 @@ function Cart(props){
       </table>
       </div>
       <div className="col-lg-3 mt-5  border-left 1px">
-          <h4>Subtotal:{total}$ ({showCart.length} items) </h4>
+          <h4>Subtotal:{total}$ ({totalItems()} items) </h4>
           <Link to='/checkout'>
             <button className="checkout-btn btn btn-light mt-3"> Proceed to Checkout</button>
           </Link>

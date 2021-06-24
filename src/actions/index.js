@@ -25,6 +25,7 @@ export const Actions ={
                     let tempSum = item.price * response.cart[item._id]
                     num +=tempSum
                }
+               localStorage.setItem("total",num)
                dispatch({type:"GET_USER_CART",payload:{cart:response.cart,showCart:showCart,total:num}})
           } catch (err) {
                throw(err)
@@ -56,6 +57,7 @@ export const Actions ={
           localStorage.removeItem("cartList")
           localStorage.removeItem("showCart")
           localStorage.removeItem('login')
+          localStorage.removeItem('total')
           localStorage.removeItem('token')
           return {type:"REMOVE_USER"}
      }
