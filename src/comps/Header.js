@@ -8,7 +8,6 @@ function Header({setSortQ,setSearchQ}) {
     const searchRef = useRef()
     const onSelectChange = () =>{
         let sort = selectRef.current.value;
-        console.log(sort);
         setSortQ(sort)
     }
     const onInputChange = () =>{

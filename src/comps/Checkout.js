@@ -37,8 +37,8 @@ function Checkout(props){
             }
         }
         catch(err){
-            console.log("from catch in cart");
-            console.log(err);
+          dispatch(Actions.removeUser())
+          toast.info("Your season expired login again")
         }
     }
     const onSubForm = async (formData)=>{

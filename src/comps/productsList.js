@@ -11,7 +11,6 @@ function ProductsList(props){
     let [amountPages,setAmountPages] = useState('')
     let [popUp,SetPopUp] = useState(false)
     const error = useSelector(state =>state.error)
-    console.log(error);
     let dispatch = useDispatch()
     const pagesAmount = async () =>{
         let url = API_URL + '/products/count'

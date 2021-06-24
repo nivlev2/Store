@@ -12,13 +12,9 @@ function UserInfo(props){
     if(!login){
         history.push('/login')
     }
-    console.log(user);
-    console.log(lastOrders);
     useEffect(()=>{
         dispatch(Actions.getUserInfo())
     },[])
-    let checker = JSON.parse(localStorage["lastOrders"])
-    console.log(checker);
     if(lastOrders.length < 1){
         return(
             <div className="container">
@@ -41,7 +37,7 @@ function UserInfo(props){
                     {lastOrders.map((order,i) =>{
                         let total = 0
                         return(
-                            <div className="last-Order">
+                            <div key={i} className="last-Order">
                                 <h4 className="text-danger">{i+1}:</h4>
                                 <div className="last-Order-flex">
                                 { order.map((item,z)=>{

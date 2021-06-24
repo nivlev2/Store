@@ -5,11 +5,9 @@ export const Actions ={
           try {
           let url = API_URL + '/products?page=' + page + '&sort=' + sortQ + '&search=' + searchQ
           const response = await doApiGet(url)
-          console.log(response);
           dispatch({type:"GET_PRODUCTS",payload:response})
           } catch (err) {
                dispatch({type:"NETWORK_ERR"})
-               console.log(err);
           }
      },
      getUserCart: () => async dispatch =>{
@@ -37,7 +35,6 @@ export const Actions ={
                const response = await doApiMethod(url,'GET')
                let url2 = API_URL + '/users/userOrders'
                const response2 = await doApiMethod(url2,'GET')
-               console.log(response2);
                localStorage.setItem("user",JSON.stringify(response))
                localStorage.setItem("lastOrders",JSON.stringify(response2))
                dispatch({type:"GET_USER_DETAILS",payload:{user:response,lastOrders:response2}})
@@ -53,8 +50,9 @@ export const Actions ={
           return {type:"LOGGED_IN"}
      },
      removeUser: () =>{
+          localStorage.removeItem("user")
           localStorage.removeItem("lastOrders")
-          localStorage.removeItem("cartList")
+          localStorage.removeItem("cart")
           localStorage.removeItem("showCart")
           localStorage.removeItem('login')
           localStorage.removeItem('total')
@@ -63,14 +61,3 @@ export const Actions ={
      }
 }
 
-// => async dispatch =>{
-//      try {
-//        //   let url = API_URL + '/users/userInfo'
-//        //   const response = await doApiMethod(url,'GET')
-//        // ,payload:cartData
-//          dispatch({type:"LOGGED_IN"})
-//     } catch (err) {
-//          console.log(err);
-//          throw(err)
-//     }     
-//   },

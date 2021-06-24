@@ -20,15 +20,13 @@ function Cart(props){
     const getCart =  () =>{
         try{
             if(login){
-                //reset userCart
             dispatch(Actions.getUserCart())
             }else{
                 dispatch(Actions.resetUserCart())
             }
         }
         catch(err){
-            console.log("from catch in cart");
-            console.log(err);
+            return err
         }
     }  
     const delOne = async(_id) =>{
@@ -41,7 +39,8 @@ function Cart(props){
                 toast("Item removed")
             }
         } catch (e) {
-            console.log(e.response);
+            dispatch(Actions.removeUser())
+            toast.info("Your season expired login again")
         }
     }
     const updateAmount = async (_id,amount) =>{
@@ -49,9 +48,9 @@ function Cart(props){
             const url =API_URL + '/users/updateCheckout'
             const resp = await doApiMethod(url,'PUT',{_id:_id,amount:amount})
             setWasChange(!wasChange)
-            console.log(resp);
         }catch(e){
-            console.log(e);
+            dispatch(Actions.removeUser())
+            toast.info("Your season expired login again")
         }
     }
     const totalItems = () =>{

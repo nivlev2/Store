@@ -12,7 +12,6 @@ function NavBar(props) {
   },[props.props.location])
   let login = useSelector(state => state.login)
   const userName = useSelector(state => state.userName)
-  console.log(login);
   const logOut = ()=>{
     localStorage.removeItem('token')
     toast.warning("bye bye")
@@ -28,7 +27,6 @@ function NavBar(props) {
 
       } catch (err) {
         dispatch(Actions.removeUser())
-        console.log(err);
       }
   }
   return (

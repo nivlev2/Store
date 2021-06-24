@@ -10,7 +10,6 @@ function Home(props){
     let [wasChange,seWasChange] = useState(1)
     let login = useSelector(state => state.login)
     let dispatch = useDispatch()
-    console.log(sortQ);
     useEffect(() => {
         getCart()
     },[login,wasChange])
@@ -27,8 +26,7 @@ function Home(props){
             }
         }
         catch(err){
-            console.log("from catch in cart");
-            console.log(err);
+            return err
         }
     }  
     const makeChange = () =>{
