@@ -73,6 +73,21 @@ function Checkout(props){
       const newVal = val < max ? val : parseInt(val.toString().substring(0, maxLength))
       setValue(valToSet, newVal, { shouldDirty: true })
   }  
+  const getDate = () =>{
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1; //January is 0!
+    const yyyy = today.getFullYear();
+     if(dd<10){
+            dd='0'+dd
+        } 
+        if(mm<10){
+            mm='0'+mm
+        } 
+    
+    today = yyyy+'-'+mm+'-'+dd;
+    return today
+      }
     return(
         <div>
           <form className="checkOut-form-form" onSubmit={handleSubmit(onSubForm)}>
@@ -89,7 +104,7 @@ function Checkout(props){
           </div>
           <div className="input-wrapper twoInputsInLine">
             <div className="input-data ">
-              <input {...lastNameRef} type="text"   maxLength="2"/>
+              <input {...lastNameRef} type="text" />
               <label htmlFor="">Last Name</label>
               <div class="underline"></div>
               {errors.lastName && <span className="text-danger">Enter valid last name</span>}
@@ -152,7 +167,7 @@ function Checkout(props){
           <div className="row">   
             <div className="input-wrapper twoInputsInLine">
             <div className="input-data">
-              <input {...expRef} type="date" />
+              <input {...expRef} type="date" min={getDate()}/>
               <label htmlFor="">EXP</label>
               <div class="underline"></div>
               {errors.EXP && <span className="text-danger">Enter valid Date</span>}
