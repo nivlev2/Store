@@ -29,6 +29,7 @@ function ProductsList(props){
             let prod = {_id:_id,amount:num}
             let resp = await doApiMethod(url,'PUT',prod)
             if(resp.n === 1){
+                props.makeChange()
                 toast("item added to your cart")
             }
         }catch(err){
