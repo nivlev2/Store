@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export const API_URL = "http://localhost:3400";
+export const API_URL = "https://shopniv.herokuapp.com";
 // export const PER_PAGE = 5;
 
 export const doApiGet = async (_url) => {
