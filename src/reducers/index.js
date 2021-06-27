@@ -1,4 +1,3 @@
-import { Actions } from "../actions";
 const login = localStorage["login"] ? JSON.parse(localStorage["login"]) : false;
 const cartList = localStorage["cart"] ? JSON.parse(localStorage["cart"]): {};
 const showCart = localStorage["showCart"] ? JSON.parse(localStorage["showCart"]):[];

@@ -1,7 +1,5 @@
-import { sortBy } from "lodash";
 import React from "react";
 import { useRef } from "react";
-import { useSelector } from "react-redux";
 
 function Header({setSortQ,setSearchQ}) {
     const selectRef = useRef()
