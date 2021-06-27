@@ -53,6 +53,13 @@ function ProductsList(props){
             </div>
         )
     }
+    if(prods_ar.length === 0) {
+        return(
+            <div className="no_products">
+                <h2 className="text-light">There are no results,<br/>try to search with diffrent key</h2>
+            </div>
+        )
+    }
     return(
         <div className="container">
 
