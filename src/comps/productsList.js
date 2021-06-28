@@ -11,6 +11,8 @@ function ProductsList(props){
     let [amountPages,setAmountPages] = useState('')
     let [popUp,SetPopUp] = useState(false)
     const error = useSelector(state =>state.error)
+    const loading = useSelector(state =>state.loading)
+
     let dispatch = useDispatch()
     const pagesAmount = async () =>{
         let url = API_URL + '/products/count'
@@ -62,7 +64,10 @@ function ProductsList(props){
     }
     return(
         <div className="container">
-
+            {loading &&<div class="d-flex justify-content-center mt-5">
+            <div class="lds-dual-ring"></div>
+            </div>
+}
             <div className="row">
                 {prods_ar.map(item =>{
                     return <SingleProduct openPopUp={openPopUp} key={item._id} addToCart={addToCart} item={item}/>

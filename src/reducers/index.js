@@ -12,13 +12,14 @@ const initState = {
     products:[],
     error:false,
     user:user,
-    lastOrders:lastOrders
+    lastOrders:lastOrders,
+    loading:true
 }
 
 export const reducer = (state = {...initState},action) =>{
     switch(action.type){
         case "GET_PRODUCTS":
-            return {...state,products:action.payload};
+            return {...state,products:action.payload,loading:false};
         case "GET_USER_CART":
             return {...state,cartList:action.payload.cart,showCart:action.payload.showCart,total:action.payload.total}
         case "GET_USER_DETAILS":
@@ -30,7 +31,7 @@ export const reducer = (state = {...initState},action) =>{
         case 'REMOVE_USER':
             return {...state,login:false}
         case "NETWORK_ERR":
-            return {...state,error:true}
+            return {...state,error:true,loading:false}
         default:
             return state
     }
