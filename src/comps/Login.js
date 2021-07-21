@@ -18,8 +18,10 @@ function Login(props){
     const onSubForm= async (formData)=>{
         try{
         let url = API_URL + '/users/login'
+        if(localStorage["cart"]){
+          formData.cart = JSON.parse(localStorage["cart"])
+        }
         let resp = await doApiMethod(url,'POST',formData);
-        
         localStorage.setItem('token', resp.token);
         dispatch(Actions.setUserLogin())
         toast.success('Logged in successfully')
