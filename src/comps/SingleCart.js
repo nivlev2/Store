@@ -1,15 +1,17 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function SingleCart(props){
     const [amount,setAmount] = useState(props.itemAmount);
     const setProdAmount = (operator) =>{
         setAmount(amount + operator)
     }
+  
     useEffect(()=>{
-        props.updateAmount(props.item._id,amount)
-    },[amount])
+            props.updateAmount(props.item._id,amount)
+        },[amount])
     return(
                 <tr key={props.item._id}>   
                  <td>

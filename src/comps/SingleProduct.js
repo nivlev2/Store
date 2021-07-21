@@ -39,7 +39,7 @@ function SingleProduct(props){
                     <i 
                     onClick={()=>{
                         if(!login){
-                            props.openPopUp() 
+                            props.NotLoggedAddTocart(props.item._id,amount,props.item) 
                         }else{
                             props.addToCart(props.item._id,amount)
                         }

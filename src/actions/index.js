@@ -43,20 +43,33 @@ export const Actions ={
           }
      },
      resetUserCart:() =>{
-          return {type:"RESET_USER_CART"}
+          if(!localStorage["NotLog"]){
+               return {type:"RESET_USER_CART"}
+          }else{
+               const cart = JSON.parse(localStorage["cart"])
+               const showCart = JSON.parse(localStorage["showCart"])
+               let total = 0;
+               for(let item of showCart){
+                    total += (item.price * cart[item._id])
+               }
+               return {type:"GET_USER_CART",payload:{cart:cart,showCart:showCart,total:total}}
+          }
      },
      setUserLogin: (userName) => {
           localStorage.setItem('login',true)
+          localStorage.removeItem('NotLog')
           return {type:"LOGGED_IN"}
      },
      removeUser: () =>{
           localStorage.removeItem("user")
           localStorage.removeItem("lastOrders")
-          localStorage.removeItem("cart")
-          localStorage.removeItem("showCart")
           localStorage.removeItem('login')
           localStorage.removeItem('total')
           localStorage.removeItem('token')
+          if(!localStorage["NotLog"]){
+               localStorage.removeItem("cart")
+               localStorage.removeItem("showCart")
+          }
           return {type:"REMOVE_USER"}
      }
 }

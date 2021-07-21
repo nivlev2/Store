@@ -9,7 +9,6 @@ import '../css_comps/products.css'
 function ProductsList(props){
     let [page,setPage] = useState(0)
     let [amountPages,setAmountPages] = useState('')
-    let [popUp,SetPopUp] = useState(false)
     const error = useSelector(state =>state.error)
     const loading = useSelector(state =>state.loading)
 
@@ -38,11 +37,32 @@ function ProductsList(props){
         }
     }
     
-    const closePopUp = () => {
-        SetPopUp(false)
-    } 
-    const openPopUp = () =>{
-        SetPopUp(true)
+    const NotLoggedAddTocart = (itemId,amount,item) =>{
+        localStorage.setItem("NotLog",true)
+        if(localStorage["cart"]){
+            const cart = JSON.parse(localStorage["cart"])
+            checkIfInCart(itemId,amount,cart)
+        }else{
+            const cart = {}
+            cart[itemId] = amount
+            localStorage.setItem("cart",JSON.stringify(cart))
+        }
+        const show = localStorage["showCart"] ? JSON.parse(localStorage["showCart"]) : [];
+        for(let i of show){
+            if(i._id === itemId) return
+        }
+        localStorage.setItem("showCart",JSON.stringify([...show,item]))
+    }
+    const checkIfInCart = (itemId,amount,cart) =>{
+        for(let key in cart){
+            if(key === itemId){
+                cart[key] = cart[key] + amount  
+                return localStorage.setItem("cart",JSON.stringify(cart));
+            }
+        }
+        const newCart = {...cart}
+        newCart[itemId] = amount
+        return localStorage.setItem("cart",JSON.stringify(newCart));
     }
 
     let prods_ar = useSelector(state => state.products)
@@ -64,24 +84,24 @@ function ProductsList(props){
     }
     return(
         <div className="container">
-            {loading &&<div class="d-flex justify-content-center mt-5">
-            <div class="lds-dual-ring"></div>
+            {loading &&<div className="d-flex justify-content-center mt-5">
+            <div className="lds-dual-ring"></div>
             </div>
 }
             <div className="row">
                 {prods_ar.map(item =>{
-                    return <SingleProduct openPopUp={openPopUp} key={item._id} addToCart={addToCart} item={item}/>
+                    return <SingleProduct NotLoggedAddTocart={NotLoggedAddTocart} key={item._id} addToCart={addToCart} item={item}/>
 
                 })}
             </div>
-            {popUp && <div onClick={closePopUp} id="popupWrapper">
+            {/* {popUp && <div onClick={closePopUp} id="popupWrapper">
                      <div id="popup"> 
                      <div onClick={closePopUp} id="popupClose">X</div>
                       <div id="popupContent"> 
                       <h3 className="mb-4">Login in order to start shopping</h3>
                        <Link onClick={closePopUp} className={`btn btn-primary`} to="/login">Click here to login</Link> </div>
                        </div>
-                       </div>} 
+                       </div>}  */}
             <div className="d-flex justify-content-center align-center">
                                
             {props.searchQ != ""  && prods_ar.length < 5 ? <React.Fragment></React.Fragment> : [...Array(amountPages)].map((item,i) =>{
