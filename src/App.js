@@ -15,6 +15,7 @@ import thunk from "redux-thunk";
 import SignUp from './comps/SignUp';
 import Checkout from './comps/Checkout';
 import UserInfo from './comps/UserInfo';
+import AddProducts from './adminComps/AddProducts';
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -47,6 +48,7 @@ function App() {
           <Route exact path="/signup" component={SignUp}/>
           <Route exact path="/checkout" component={Checkout}/>
           <Route exact path="/userInfo" component={UserInfo}/>
+          <Route exact path="/addProd" component={AddProducts}/>
           <Route path="/" component={Page404}/>
         </Switch>
       </main>

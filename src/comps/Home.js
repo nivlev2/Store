@@ -8,7 +8,7 @@ function Home(props){
     let [sortQ,setSortQ] = useState('_id')
     let [searchQ,setSearchQ] = useState('')
     let [wasChange,seWasChange] = useState(1)
-    let login = useSelector(state => state.login)
+    let login = useSelector(state => state.login);
     let dispatch = useDispatch()
     useEffect(() => {
         getCart()

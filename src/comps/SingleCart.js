@@ -8,7 +8,6 @@ function SingleCart(props){
     const setProdAmount = (operator) =>{
         setAmount(amount + operator)
     }
-  
     useEffect(()=>{
             props.updateAmount(props.item._id,amount)
         },[amount])

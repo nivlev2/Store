@@ -15,6 +15,7 @@ function UserInfo(props){
     useEffect(()=>{
         dispatch(Actions.getUserInfo())
     },[])
+    console.log(user);
     if(lastOrders.length < 1){
         return(
             <div className="container">

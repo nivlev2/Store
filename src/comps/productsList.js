@@ -3,16 +3,17 @@ import {Actions} from '../actions/index'
 import {toast} from 'react-toastify'
 import {useDispatch,useSelector} from 'react-redux'
 import { API_URL, doApiGet, doApiMethod } from '../services/apiSer';
-import { Link } from 'react-router-dom';
 import SingleProduct from './SingleProduct';
 import '../css_comps/products.css'
+import { Link } from 'react-router-dom';
 function ProductsList(props){
     let [page,setPage] = useState(0)
     let [amountPages,setAmountPages] = useState('')
     const error = useSelector(state =>state.error)
     const loading = useSelector(state =>state.loading)
-
+    const user = useSelector(state => state.user);
     let dispatch = useDispatch()
+    console.log("render");
     const pagesAmount = async () =>{
         let url = API_URL + '/products/count'
         let resp = await doApiGet(url)
@@ -89,21 +90,14 @@ function ProductsList(props){
             </div>
 }
             <div className="row">
+                {user.admin && <div className="d-flex justify-content-center"><Link to="/addProd" className="mt-3 w-25 btn btn-danger">Add products</Link></div>}
                 {prods_ar.map(item =>{
                     return <SingleProduct NotLoggedAddTocart={NotLoggedAddTocart} key={item._id} addToCart={addToCart} item={item}/>
 
                 })}
             </div>
-            {/* {popUp && <div onClick={closePopUp} id="popupWrapper">
-                     <div id="popup"> 
-                     <div onClick={closePopUp} id="popupClose">X</div>
-                      <div id="popupContent"> 
-                      <h3 className="mb-4">Login in order to start shopping</h3>
-                       <Link onClick={closePopUp} className={`btn btn-primary`} to="/login">Click here to login</Link> </div>
-                       </div>
-                       </div>}  */}
             <div className="d-flex justify-content-center align-center">
-                               
+                      
             {props.searchQ != ""  && prods_ar.length < 5 ? <React.Fragment></React.Fragment> : [...Array(amountPages)].map((item,i) =>{
                     return (
                     <div className="pages"key={i} onClick={() => {

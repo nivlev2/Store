@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux'
 function SingleProduct(props){
     let [amount,setAmount] = useState(1)
     const login = useSelector(state =>state.login)
+    const user = useSelector(state => state.user);
     const setProdAmount = (operator) =>{
         setAmount(amount + operator)
     }
@@ -47,6 +48,12 @@ function SingleProduct(props){
                     className="fa fa-shopping-cart h3"></i>
                 </div>
             </div>
+            {user.admin &&  <div className="container bg-light">
+                <hr className="bg-light"></hr>
+                <i class="fa fa-trash h3 float-start ms-2 admin-icon" aria-hidden="true"></i>
+                <i class="fa fa-pencil h3 float-end me-2 admin-icon" aria-hidden="true"></i>
+            </div>
+ }
         </div>
         </div>
         )}
