@@ -249,8 +249,9 @@ a
     animation: lds-dual-ring 1.2s linear infinite;
   }
   .admin-icon:hover{
-    color:orange;
+    color:orange !important;
     cursor: pointer;
+    font-size: 200%;
   }
   @keyframes lds-dual-ring {
     0% {

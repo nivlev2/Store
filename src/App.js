@@ -16,6 +16,7 @@ import SignUp from './comps/SignUp';
 import Checkout from './comps/Checkout';
 import UserInfo from './comps/UserInfo';
 import AddProducts from './adminComps/AddProducts';
+import EditProducts from './adminComps/EditProduct';
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -49,6 +50,7 @@ function App() {
           <Route exact path="/checkout" component={Checkout}/>
           <Route exact path="/userInfo" component={UserInfo}/>
           <Route exact path="/addProd" component={AddProducts}/>
+          <Route exact path="/EditProd/:id" render={(props) =><EditProducts urlParam={props.match.params.id}/>}/>
           <Route path="/" component={Page404}/>
         </Switch>
       </main>

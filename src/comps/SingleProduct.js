@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import {useSelector} from 'react-redux'
+import { Link } from 'react-router-dom';
 
 function SingleProduct(props){
     let [amount,setAmount] = useState(1)
@@ -50,8 +51,8 @@ function SingleProduct(props){
             </div>
             {user.admin &&  <div className="container bg-light">
                 <hr className="bg-light"></hr>
-                <i class="fa fa-trash h3 float-start ms-2 admin-icon" aria-hidden="true"></i>
-                <i class="fa fa-pencil h3 float-end me-2 admin-icon" aria-hidden="true"></i>
+                <i class="fa fa-trash h3 float-start ms-2 admin-icon text-danger" aria-hidden="true"></i>
+                <Link to={"/editProd/"+props.item._id} class="fa fa-pencil h3 float-end me-2 admin-icon" aria-hidden="true"></Link>
             </div>
  }
         </div>

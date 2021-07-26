@@ -45,7 +45,7 @@ function SignUp(props){
         <div className="login-bg">
         </div>
           <div className="container z-i ">
-          <h3>Sign up now</h3>
+          <h3 className="border-bottom w-50 mx-auto">Sign up now</h3>
           <form onSubmit={handleSubmit(onSubForm)} className="col-lg-6 mx-auto shadow p-3 rounded mt-3">
           <div>
               <label>Name:</label>
