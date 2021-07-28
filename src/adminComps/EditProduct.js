@@ -13,7 +13,6 @@ function EditProducts({urlParam}){
     const category = register("category", { required: true, minLength: 2 });
     const image = register("image", { required: true, minLength: 10 });
     let [oldProd,setOldProd] = useState({});
-    const [showProd,setShowProd] = useState({...oldProd})
     useEffect(()=>{
         const getProdDetails = async() =>{
             let url = API_URL + '/products/single/' + urlParam;
@@ -33,7 +32,7 @@ function EditProducts({urlParam}){
                 change = true
             }
         }
-        if(!change) return
+        if(!change) return toast.info("There were no changes to make")
         setOldProd(formData)
         try{
             formData.price= Number(formData.price)
@@ -47,11 +46,6 @@ function EditProducts({urlParam}){
             toast.warning("There was an error updating, try again later")
         }
     }
-    const setShow = (e) =>{
-        console.log("work");
-        // console.log(e.target.value);
-        // setShowProd({...showProd,key:value})
-    }
     return(
         <form onSubmit={handleSubmit(onSub)}>
         <div className="container">
@@ -61,7 +55,6 @@ function EditProducts({urlParam}){
             <img src={oldProd.image} alt=""/>
         </div>
         <div className="product-details">
-            {/* <span class="product-catagory">Women,bag</span> */}
             <h4>{oldProd.name}</h4>
             <div className="product-bottom-details">
                 <div className="product-price">{oldProd.price}$</div>
