@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 function ProductsList(props){
     let [page,setPage] = useState(0)
     let [amountPages,setAmountPages] = useState('')
+    const [adminRemoved,setAdminRemoved] = useState(false)
     const error = useSelector(state =>state.error)
     const loading = useSelector(state =>state.loading)
     const user = useSelector(state => state.user);
@@ -22,7 +23,7 @@ function ProductsList(props){
     useEffect(()=>{
         pagesAmount()
         dispatch(Actions.getProds(page,props.sortQ,props.searchQ))
-    },[page,props.sortQ,props.searchQ])
+    },[page,props.sortQ,props.searchQ,adminRemoved])
     const addToCart = async (_id,amount) =>{
         const num = amount
         try{
@@ -65,7 +66,9 @@ function ProductsList(props){
         newCart[itemId] = amount
         return localStorage.setItem("cart",JSON.stringify(newCart));
     }
-
+    const toggleAdminRemoved = () =>{
+        setAdminRemoved(!adminRemoved)
+    }
     let prods_ar = useSelector(state => state.products)
     if(error){
         return (
@@ -92,7 +95,7 @@ function ProductsList(props){
             <div className="row">
                 {user.admin && <div className="d-flex justify-content-center"><Link to="/addProd" className="mt-3 w-25 btn btn-danger">Add products</Link></div>}
                 {prods_ar.map(item =>{
-                    return <SingleProduct NotLoggedAddTocart={NotLoggedAddTocart} key={item._id} addToCart={addToCart} item={item}/>
+                    return <SingleProduct toggleAdminRemoved={toggleAdminRemoved} NotLoggedAddTocart={NotLoggedAddTocart} key={item._id} addToCart={addToCart} item={item}/>
 
                 })}
             </div>

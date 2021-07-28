@@ -219,11 +219,11 @@ a
     max-width:300px ;
     margin:10% auto;
     padding: 20px;
-    background-color: rgb(241, 201, 125);
+    background-color: white;
     position: relative;
     border-radius: 10px;
     display: block;
-    color: white;
+    color: red;
     z-index: 4;
   }
   #popupClose{
@@ -252,6 +252,10 @@ a
     color:orange !important;
     cursor: pointer;
     font-size: 200%;
+  }
+  .close-del{
+      height: 100vh;
+      width: 100vw;
   }
   @keyframes lds-dual-ring {
     0% {
