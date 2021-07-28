@@ -23,15 +23,12 @@ function SingleProduct(props){
     const deleteProd = async () =>{
         try{
             const url = API_URL + "/products/delete/" + props.item._id;
-            if(window.confirm(`Are you sure you want to delete${props.item.name}`)){
             const response = await doApiMethod(url,"DELETE")
             console.log(response);
                 if(response.n === 1){
                     toast("Product removed");
                     props.toggleAdminRemoved()
                 }
-
-            }
         }catch(e){
             toast.error("there is a promblem please try again later")
         }
