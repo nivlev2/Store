@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 import {API_URL,doApiMethod} from '../services/apiSer'
 import {useHistory} from "react-router-dom"
 import {Actions} from'../actions/index'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 
 function Login(props){
     const {register , handleSubmit ,  formState: { errors } } = useForm();

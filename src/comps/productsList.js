@@ -15,9 +15,13 @@ function ProductsList(props){
     const user = useSelector(state => state.user);
     let dispatch = useDispatch()
     const pagesAmount = async () =>{
-        let url = API_URL + '/products/count'
-        let resp = await doApiGet(url)
-        setAmountPages(Math.ceil(resp / 6))
+        try{
+            let url = API_URL + '/products/count'
+            let resp = await doApiGet(url)
+            setAmountPages(Math.ceil(resp / 6))
+        }catch(e){
+            return e
+        }
     }
     useEffect(()=>{
         pagesAmount()

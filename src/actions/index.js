@@ -56,7 +56,7 @@ export const Actions ={
                return {type:"GET_USER_CART",payload:{cart:cart,showCart:showCart,total:total}}
           }
      },
-     setUserLogin: (userName) => {
+     setUserLogin: () => {
           localStorage.setItem('login',true)
           localStorage.removeItem('NotLog')
           return {type:"LOGGED_IN"}
