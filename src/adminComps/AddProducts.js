@@ -39,34 +39,50 @@ function AddProducts(props){
     }
     return(
         <div>     
-          <div className="container z-i ">
-          <h3>Sign up now</h3>
+          <div className="container my-5">
           <form onSubmit={handleSubmit(onSubForm)} className="col-lg-6 mx-auto shadow p-3 rounded mt-3">
           <div>
-              <label>Name:</label>
-              <input {...nameRef} type="text" className="form-control" />
-              {errors.name && <span className="text-danger">Enter valid name</span>}
-            </div>
+          <h3 className="text-center text-light mb-4">Add product</h3>
 
-            <div>          <div>
-              <label>Price:</label>
-              <input {...priceRef} type="number" min="0" max="1000"className="form-control" />
-              {errors.price && <span className="text-danger">Enter valid price</span>}
             </div>
-
-              <label>Category:</label>
-              <input {...categoryRef} type="text" className="form-control" />
-              {errors.category && <span className="text-danger">Enter valid category</span>}
-            </div>
-            <div>
-              <label>Image url:</label>
-              <input {...imageRef} type="text" className="form-control" />
-              {errors.password && <span className="text-danger">Enter valid image url</span>}
-            </div>
-            <button className="btn btn-success mt-3">Add</button>
+            <div className="input-wrapper oneInputsInLine">
+        <div className="input-data">
+          <input {...nameRef} type="text" className="text-primary"  />
+          <label className="text-warning mb-1">Name:</label>
+          <div className="underline"></div>
+          {errors.name && <span className="text-danger">Enter valid name</span>}
+        </div>
+        </div>
+        <div className="input-wrapper oneInputsInLine">
+        <div className="input-data">
+          <input {...priceRef} type="text" className="text-primary"  />
+          <label className="text-warning mb-1">Price:</label>
+          <div className="underline"></div>
+          {errors.price && <span className="text-danger">Enter valid price</span>}
+        </div>
+        </div>
+        <div className="input-wrapper oneInputsInLine">
+        <div className="input-data">
+          <input {...categoryRef} type="text" className="text-primary"  />
+          <label className="text-warning mb-1">Category:</label>
+          <div className="underline"></div>
+          {errors.category && <span className="text-danger">Enter valid category</span>}
+        </div>
+        </div>
+        <div className="input-wrapper oneInputsInLine">
+        <div className="input-data">
+          <input {...imageRef} type="text" className="text-primary"  />
+          <label className="text-warning mb-1">Image:</label>
+          <div className="underline"></div>
+          {errors.image && <span className="text-danger">Enter valid image url</span>}
+        </div>
+        </div>
+        <div className="text-center">
+            <button className="btn btn-primary mt-3 w-25 ">Add product</button>
+          </div>
           </form>
         </div>
-  </div> 
+        </div>
     )
 }
 

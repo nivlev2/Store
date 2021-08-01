@@ -88,11 +88,14 @@ function ProductsList(props){
     }
     return(
         <div className="container">
+            
             {loading &&<div className="d-flex justify-content-center mt-5">
             <div className="lds-dual-ring"></div>
             </div>
 }
+
             <div className="row">
+                
                 {user.admin && <div className="d-flex justify-content-center"><Link to="/addProd" className="mt-3 w-25 btn btn-danger">Add products</Link></div>}
                 {prods_ar.map(item =>{
                     return <SingleProduct toggleAdminRemoved={toggleAdminRemoved} NotLoggedAddTocart={NotLoggedAddTocart} key={item._id} addToCart={addToCart} item={item}/>
@@ -110,6 +113,7 @@ function ProductsList(props){
                     >{i+1}</div>)
                 })}
             </div>
+            
         </div> 
     )
 }

@@ -211,6 +211,7 @@ a
     width: 100vw;
     height: 100vh;
     display: block;
+    z-index: 2;
   }
   #popup{
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -225,6 +226,9 @@ a
     display: block;
     color: red;
     z-index: 4;
+    animation-name            : pulse;
+    animation-duration        : 0.8s;
+    /* animation-iteration-count : infinite; */
   }
   #popupClose{
     position: absolute;
@@ -264,5 +268,9 @@ a
     100% {
       transform: rotate(360deg);
     }
+     
   }
-  
+  @keyframes pulse {
+    from { transform: scale(0);}
+    to   { transform: scale(1);}
+  }

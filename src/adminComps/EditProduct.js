@@ -67,6 +67,8 @@ function EditProducts({urlParam}){
           <input {...name} type="text" className="text-primary"  />
           <label className="text-warning mb-1">Name:</label>
           <div className="underline"></div>
+          {errors.name && <small className="text-danger" >please enter valid name</small>}
+
         </div>
         </div>
         <div className="input-wrapper twoInputsInLine">
@@ -74,6 +76,8 @@ function EditProducts({urlParam}){
           <input {...price} type="number" className="text-primary" />
           <label className="text-warning mb-1">Price:</label>
           <div className="underline"></div>
+          {errors.price && <small className="text-danger" >please enter valid price</small>}
+
         </div>
         </div>
         <div className="input-wrapper twoInputsInLine">
@@ -81,6 +85,8 @@ function EditProducts({urlParam}){
           <input {...category}  type="text" className="text-primary"  />
           <label  className="text-warning mb-1">Category:</label>
           <div className="underline"></div>
+          {errors.category && <small className="text-danger" >please enter valid category</small>}
+
         </div>
         </div>
         <div className="input-wrapper w-75">
@@ -88,6 +94,8 @@ function EditProducts({urlParam}){
           <input {...image} type="text" className="text-primary"  />
           <label className="text-warning mb-1">Image url:</label>
           <div className="underline"></div>
+          {errors.image && <small className="text-danger" >please enter valid image url</small>}
+
         </div>
         </div>
         <div className="text-center">

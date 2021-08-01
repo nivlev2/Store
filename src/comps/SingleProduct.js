@@ -15,10 +15,13 @@ function SingleProduct(props){
         setAmount(amount + operator)
     }
     const openDel = () =>{
+
         setDel(true);
     }
-    const closeDel = () =>{
-        setDel(false)
+    const closeDel = (e) =>{
+        if(e.target.className !== "not-close"){
+            setDel(false)
+        }
     }
     const deleteProd = async () =>{
         try{
@@ -36,7 +39,22 @@ function SingleProduct(props){
 
     // const amount = useRef()
     return(
+        <React.Fragment>
+            {del &&<div id="popupWrapper" onClick={closeDel} >
+        <div id="popup" className="not-close">
+            <div id="popupClose" >X</div>
+            <div id="popupContent" className="not-close">
+                <h4 className="not-close">Are you sure you want to delete {props.item.name}?</h4>
+                <button className="w-50 btn btn-primary">Back</button>
+                <button className="w-50 btn btn-danger" onClick={deleteProd}>Delete</button>
+
+            </div>
+        </div>
+    </div>
+}
+
         <div className="product-card" key={props.item._id}>
+            
         <div className="product-tumb">
             <img src={props.item.image} alt=""/>
         </div>
@@ -74,16 +92,16 @@ function SingleProduct(props){
             </div>
             {user.admin &&  <div className="container bg-light">
                 <hr className="bg-light"></hr>
-                {del ? <div className="float-start">
-                    <h4 className="text-light">Are you sure?</h4>
-                    <button onClick={closeDel} className="btn btn-primary m-1 mb-2">Back</button><button onClick={deleteProd} className="btn btn-danger m-1 mb-2">Delete</button></div>:<i onClick={openDel} class="fa fa-trash h3 float-start ms-2 admin-icon text-danger" aria-hidden="true"></i>
-}
-                <Link to={"/editProd/"+props.item._id} class="fa fa-pencil h3 float-end me-2 admin-icon" aria-hidden="true"></Link>
+                <i onClick={openDel} className="fa fa-trash h3 float-start ms-2 admin-icon text-danger" aria-hidden="true"></i>
+                <Link to={"/editProd/"+props.item._id} className="fa fa-pencil h3 float-end me-2 admin-icon" aria-hidden="true"></Link>
             </div>
  }
+ 
         </div>
 
         </div>
+        
+        </React.Fragment>
         )}
 
 export default SingleProduct
