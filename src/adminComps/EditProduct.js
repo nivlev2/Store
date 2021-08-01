@@ -7,32 +7,35 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 
 function EditProducts({urlParam}){
-    const { register, handleSubmit,setValue, formState: { errors } } = useForm();
     const history = useHistory()
     const admin = useSelector(state => state.user.admin)
-
+    const [name,setName]=useState("")
+    const [price,setPrice]=useState(0)
+    const [category,setCategory]=useState("")
+    const [image,setImage]=useState("")
     if(!admin){
         history.push('/')
     }
-    const name = register("name", { required: true, minLength: 2 });
-    const price = register("price", { required: true, minLength: 1 });
-    const category = register("category", { required: true, minLength: 2 });
-    const image = register("image", { required: true, minLength: 10 });
     let [oldProd,setOldProd] = useState({});
     useEffect(()=>{
         const getProdDetails = async() =>{
             let url = API_URL + '/products/single/' + urlParam;
             const response = await doApiGet(url)
             setOldProd(response)
-            setValue("name",response.name)
-            setValue("price",response.price)
-            setValue("category",response.category)
-            setValue("image",response.image)
+            setName(response.name)
+            setPrice(response.price)
+            setCategory(response.category)
+            setImage(response.image)
         }
         getProdDetails()
     },[])
-    const onSub = async(formData) =>{
+    const onSub = async() =>{
         let change = false
+        const formData ={};
+        formData.name = name;
+        formData.price = price;
+        formData.category = category;
+        formData.image = image;
         for(let key in formData){
             if(formData[key] !== oldProd[key]){
                 change = true
@@ -53,60 +56,62 @@ function EditProducts({urlParam}){
         }
     }
     return(
-        <form onSubmit={handleSubmit(onSub)}>
+        <form onSubmit={(e)=>{
+            e.preventDefault();
+            onSub()
+        }}>
         <div className="container">
             <div className="row mt-3">
             <h3 className="text-center border-bottom text-light mt-3">You edit this product</h3>
             <div className="product-card">
         <div className="product-tumb">
-            <img src={oldProd.image} alt=""/>
+            <img src={image} alt=""/>
         </div>
         <div className="product-details">
-            <h4>{oldProd.name}</h4>
+            <h4>{name}</h4>
             <div className="product-bottom-details">
-                <div className="product-price">{oldProd.price}$</div>
+                <div className="product-price">{price}$</div>
                 <div className="product-links"> 
             </div></div></div></div>
             </div>
             <div className="row">
         <div className="input-wrapper twoInputsInLine">
         <div className="input-data">
-          <input {...name} type="text" className="text-primary"  />
+          <input onChange={(e)=>setName(e.target.value)} value={name} name="name"  type="text" className="text-primary"  />
           <label className="text-warning mb-1">Name:</label>
           <div className="underline"></div>
-          {errors.name && <small className="text-danger" >please enter valid name</small>}
-
+          {name.length < 2 && <small className="text-danger" >please enter valid name</small>}
         </div>
         </div>
         <div className="input-wrapper twoInputsInLine">
         <div className="input-data">
-          <input {...price} type="number" className="text-primary" />
+          <input onChange={(e)=>setPrice(e.target.value)} value={price} name="price"  type="number" className="text-primary" />
           <label className="text-warning mb-1">Price:</label>
           <div className="underline"></div>
-          {errors.price && <small className="text-danger" >please enter valid price</small>}
+          {price <= 0 && <small className="text-danger" >please enter valid price</small>}
 
         </div>
         </div>
         <div className="input-wrapper twoInputsInLine">
         <div className="input-data">
-          <input {...category}  type="text" className="text-primary"  />
+          <input onChange={(e)=>setCategory(e.target.value)} value={category} name="category"  type="text" className="text-primary"  />
           <label  className="text-warning mb-1">Category:</label>
           <div className="underline"></div>
-          {errors.category && <small className="text-danger" >please enter valid category</small>}
+          {category.length < 2 && <small className="text-danger" >please enter valid category</small>}
 
         </div>
         </div>
         <div className="input-wrapper w-75">
         <div className="input-data">
-          <input {...image} type="text" className="text-primary"  />
+          <input onChange={(e)=>setImage(e.target.value)} value={image} name="image" type="text" className="text-primary"  />
           <label className="text-warning mb-1">Image url:</label>
           <div className="underline"></div>
-          {errors.image && <small className="text-danger" >please enter valid image url</small>}
+          {image < 10 && <small className="text-danger" >please enter valid image url</small>}
 
         </div>
         </div>
         <div className="text-center">
-        <button className="btn btn-primary mt-3 w-25">Edit Product</button>
+        <button className="btn btn-primary my-3 w-25">Edit Product</button>
         </div>
       </div>    
       </div>
