@@ -11,8 +11,7 @@ function Login(props){
     const {register , handleSubmit ,  formState: { errors } } = useForm();
     const history = useHistory();
     const dispatch = useDispatch();
-    const login = useSelector(state => state.login);
-    if(login){
+    if(localStorage["token"]){
       history.push('/')
     }
     const onSubForm= async (formData)=>{
