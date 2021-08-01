@@ -103,7 +103,7 @@ function ProductsList(props){
             </div>
             <div className="d-flex justify-content-center align-center">
                       
-            {props.searchQ != ""  && prods_ar.length < 5 ? <React.Fragment></React.Fragment> : [...Array(amountPages)].map((item,i) =>{
+            {props.searchQ != ""  && prods_ar.length < 6 ? <React.Fragment></React.Fragment> : [...Array(amountPages)].map((item,i) =>{
                     return (
                     <div className="pages"key={i} onClick={() => {
                         setPage(i)
