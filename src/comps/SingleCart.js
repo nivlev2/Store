@@ -1,7 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 
 function SingleCart(props){
     const [amount,setAmount] = useState(props.itemAmount);
@@ -21,7 +20,7 @@ function SingleCart(props){
                  className="fa fa-trash table-icon" aria-hidden="true"></i>
                  </td>
                 <td>{props.item.name}</td>
-                <td><img src={props.item.image} style={{height:"50px"}}/></td>
+                <td><img src={props.item.image} style={{height:"50px"}} alt={props.item.name}/></td>
                 <td><div className="counter w-25">
                         <div style={amount < 2? {cursor:"not-allowed"}: {cursor:"pointer"}} onClick={()=>{
                             if(amount > 1){

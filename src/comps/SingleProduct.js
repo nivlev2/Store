@@ -59,7 +59,6 @@ function SingleProduct(props){
             <img src={props.item.image} alt=""/>
         </div>
         <div className="product-details">
-            {/* <span class="product-catagory">Women,bag</span> */}
             <h4>{props.item.name}</h4>
             <div className="product-bottom-details">
                 <div className="product-price">{props.item.price}$</div>

@@ -4,10 +4,16 @@ import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 function EditProducts({urlParam}){
     const { register, handleSubmit,setValue, formState: { errors } } = useForm();
     const history = useHistory()
+    const admin = useSelector(state => state.user.admin)
+
+    if(!admin){
+        history.push('/')
+    }
     const name = register("name", { required: true, minLength: 2 });
     const price = register("price", { required: true, minLength: 1 });
     const category = register("category", { required: true, minLength: 2 });
@@ -49,7 +55,8 @@ function EditProducts({urlParam}){
     return(
         <form onSubmit={handleSubmit(onSub)}>
         <div className="container">
-            <div className="row">
+            <div className="row mt-3">
+            <h3 className="text-center border-bottom text-light mt-3">You edit this product</h3>
             <div className="product-card">
         <div className="product-tumb">
             <img src={oldProd.image} alt=""/>

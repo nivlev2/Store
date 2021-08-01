@@ -54,7 +54,7 @@ function Login(props){
           </div>
           <div>
             <label>Password:</label>
-            <input {...passwordRef} type="text" className="form-control" />
+            <input {...passwordRef} type="password" className="form-control" />
             {errors.password && <span className="text-danger">Enter min 3 charts password</span>}
           </div>
           <Link to='/signup' className="d-block mt-3 text-warning link-to-login">Not register yet? Click here and sign up now</Link>

@@ -15,7 +15,6 @@ function UserInfo(props){
     useEffect(()=>{
         dispatch(Actions.getUserInfo())
     },[])
-    console.log(user);
     if(lastOrders.length < 1){
         return(
             <div className="container">
@@ -45,7 +44,7 @@ function UserInfo(props){
                                     let amount =  user.lastOrders[i][item._id]
                                     total += amount * item.price
                             return(
-                                <div className="last-Order-item">
+                                <div key={item._id} className="last-Order-item">
                                         <div style={{backgroundImage:`url(${item.image})`}} className="last-Order-img"/>
                                         <div className="last-Order-details">
                                         <div>Price: {item.price}$</div>
