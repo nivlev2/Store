@@ -2,6 +2,7 @@ import { doApiGet,API_URL, doApiMethod } from "../services/apiSer"
 
 export const Actions ={
      getProds: (page,sortQ,searchQ) => async dispatch =>{
+          if(searchQ) page = 0
           try {
           let url = API_URL + '/products?page=' + page + '&sort=' + sortQ + '&search=' + searchQ
           const response = await doApiGet(url)

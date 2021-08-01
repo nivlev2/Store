@@ -14,7 +14,6 @@ function ProductsList(props){
     const loading = useSelector(state =>state.loading)
     const user = useSelector(state => state.user);
     let dispatch = useDispatch()
-    console.log("render");
     const pagesAmount = async () =>{
         let url = API_URL + '/products/count'
         let resp = await doApiGet(url)
