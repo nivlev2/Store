@@ -57,6 +57,7 @@ function ProductsList(props){
             if(i._id === itemId) return
         }
         localStorage.setItem("showCart",JSON.stringify([...show,item]))
+        toast.success("Item added to your cart")
     }
     const checkIfInCart = (itemId,amount,cart) =>{
         for(let key in cart){

@@ -43,7 +43,6 @@ function Cart(props) {
         toast.info("Your season expired login again");
       }
     } else {
-      console.log("from here");
       let cart = JSON.parse(localStorage["cart"]);
       delete cart[_id];
       let showCart = JSON.parse(localStorage["showCart"]).filter(
@@ -82,18 +81,6 @@ function Cart(props) {
     }
     return total;
   };
-  // if(!login){
-  //     return(
-  //         <div>
-  //     <div className="notLoginCart">
-  //     </div>
-  //         <div className="container z-i ">
-  //         <h4>You have to log in in order to add item to your cart</h4>
-  //             <Link Name="btn btn-primary" to="/login">Click here to Login</Link>
-  //     </div>
-  //     </div>
-  //     )
-  // }
   if (showCart.length === 0) {
     return (
       <div>
