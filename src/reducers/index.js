@@ -29,7 +29,7 @@ export const reducer = (state = {...initState},action) =>{
         case "LOGGED_IN":
             return {...state,login:true}
         case 'REMOVE_USER':
-            return {...state,login:false,user:{}}
+            return {...state,login:false,user:{},lastOrders:[]}
         case "NETWORK_ERR":
             return {...state,error:true,loading:false}
         default:
