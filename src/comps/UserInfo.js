@@ -6,7 +6,6 @@ import { Actions } from '../actions';
 function UserInfo(props){
     const dispatch = useDispatch()
     const lastOrders = useSelector(state => state.lastOrders)
-    console.log(lastOrders);
     const user = useSelector(state => state.user)
     const login = useSelector(state => state.login)
     const history = useHistory()
