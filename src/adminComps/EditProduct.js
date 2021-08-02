@@ -111,7 +111,7 @@ function EditProducts({urlParam}){
         </div>
         </div>
         <div className="text-center">
-        <button className="btn btn-primary my-3 w-25">Edit Product</button>
+        <button className="btn btn-primary my-3 ">Edit Product</button>
         </div>
       </div>    
       </div>

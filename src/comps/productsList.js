@@ -100,7 +100,7 @@ function ProductsList(props){
 
             <div className="row">
                 
-                {user.admin && <div className="d-flex justify-content-center"><Link to="/addProd" className="mt-3 w-25 btn btn-danger">Add products</Link></div>}
+                {user.admin && <div className="d-flex justify-content-center"><Link to="/addProd" className="mt-3 btn btn-danger">Add products</Link></div>}
                 {prods_ar.map(item =>{
                     return <SingleProduct toggleAdminRemoved={toggleAdminRemoved} NotLoggedAddTocart={NotLoggedAddTocart} key={item._id} addToCart={addToCart} item={item}/>
 

@@ -78,7 +78,7 @@ function AddProducts(props){
         </div>
         </div>
         <div className="text-center">
-            <button className="btn btn-primary mt-3 w-25 ">Add product</button>
+            <button className="btn btn-primary mt-3 ">Add product</button>
           </div>
           </form>
         </div>
