@@ -65,7 +65,8 @@ function SingleProduct(props){
                 <div className="product-links"> 
                       {/* <input ref={amount} min="1" max="20" type="number"/> */}
                     {/* <a href=""><i class="fa fa-heart"></i></a> */}
-                    <div className="counter">
+                    {!user.admin && <React.Fragment>
+                                             <div className="counter">
                         <div style={amount < 2? {cursor:"not-allowed"}: {cursor:"pointer"}} onClick={()=>{
                             if(amount > 1){
                                 setProdAmount(-1)
@@ -87,6 +88,7 @@ function SingleProduct(props){
                         }
                     }} 
                     className="fa fa-shopping-cart h3"></i>
+                        </React.Fragment>}
                 </div>
             </div>
             {user.admin &&  <div className="container bg-light">
