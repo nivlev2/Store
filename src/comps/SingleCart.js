@@ -4,6 +4,18 @@ import { useState } from 'react';
 
 function SingleCart(props){
     const [amount,setAmount] = useState(props.itemAmount);
+    let [del,setDel] = useState(false)
+
+    const openDel = () =>{
+
+        setDel(true);
+    }
+    const closeDel = (e) =>{
+        if(e.target.className !== "not-close"){
+            setDel(false)
+        }
+    }
+
     const setProdAmount = (operator) =>{
         setAmount(amount + operator)
     }
@@ -11,11 +23,25 @@ function SingleCart(props){
             props.updateAmount(props.item._id,amount)
         },[amount])
     return(
+        <React.Fragment>
+            {del && <div id="popupWrapper"  onClick={closeDel}>
+        <div id="popup" className="not-close">
+            <div id="popupClose" onClick={closeDel} >X</div>
+            <div id="popupContent" className="not-close">
+                <h4 className="not-close">Are you sure you want to remove {props.item.name}?</h4>
+                <button className="Popup-button-back">Back</button>
+                <button className="Popup-button-del" onClick={()=>{
+                    props.delOne(props.item._id)
+                }}>Delete</button>
+            </div>
+        </div>
+    </div>
+}
                 <tr key={props.item._id}>   
                  <td>
                  <i 
                  onClick={()=>{
-                     props.delOne(props.item._id)
+                    openDel()
                  }} 
                  className="fa fa-trash table-icon" aria-hidden="true"></i>
                  </td>
@@ -35,7 +61,8 @@ function SingleCart(props){
                         }} className="increment w-50">+</div>
                     </div></td>
                 <td>{props.item.price}$ ({props.item.price * amount})$</td>
-                </tr>    
+                </tr>  
+                 </React.Fragment> 
 )
 }
 

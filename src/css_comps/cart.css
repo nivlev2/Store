@@ -89,7 +89,23 @@
     color:black;
     display: block;
 }
-
+.Popup-button-del,.Popup-button-back{
+ width: 45%;
+ padding: 7px;
+ text-decoration: none;
+ border:1px solid black;
+border-radius: 15px;
+margin: 2px;
+}
+.Popup-button-del{
+    background: rgb(3, 0, 0);
+    color: white;
+    transition: 1s;
+}
+.Popup-button-del:hover{
+    background:white;
+    color: black;
+}
 @media (max-width:1400px){
     .last-Order{
         margin: 20px auto;
