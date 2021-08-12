@@ -19,7 +19,7 @@ function Header({setSortQ,setSearchQ}) {
           <h1 className="home-title">All you need for a camping</h1>
         </div>
         <div className="container">
-            <div className="row mt-2 ">
+            <div className="row mt-2">
                 <div className="col-md-6 mt-2">
                     <input placeholder="Search items " onChange={onInputChange} ref={searchRef} type="text" className="form-control w-75 float-start "/>
                     <button className="btn btn-info">Search</button>

@@ -48,13 +48,13 @@ function SingleCart(props){
                 <td>{props.item.name}</td>
                 <td><img src={props.item.image} style={{height:"50px"}} alt={props.item.name}/></td>
                 <td><div className="counter w-25">
-                        <div style={amount < 2? {cursor:"not-allowed"}: {cursor:"pointer"}} onClick={()=>{
+                        <div style={amount < 2? {background:"white",color:'black',cursor:"text"}: {cursor:"pointer"}} onClick={()=>{
                             if(amount > 1){
                              setProdAmount(-1)
                             }
                         }} className="decrement w-50">-</div>
                         <div  className="count mx-1">{amount}</div>
-                        <div style={amount > 98? {cursor:"not-allowed"}: {cursor:"pointer"}}onClick={()=>{
+                        <div style={amount > 98? {background:"white",color:'black',cursor:"text"}: {cursor:"pointer"}}onClick={()=>{
                             if(amount < 99){
                                 setProdAmount(+1)
                             }

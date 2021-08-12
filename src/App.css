@@ -147,6 +147,9 @@
 .checkOut-form-form{
   width: 70%;
   margin: 5% auto;
+  background-color: #f8a053;
+  padding: 30px;
+  border-radius: 30px;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

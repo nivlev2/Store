@@ -17,6 +17,7 @@ import Checkout from './comps/Checkout';
 import UserInfo from './comps/UserInfo';
 import AddProducts from './adminComps/AddProducts';
 import EditProducts from './adminComps/EditProduct';
+import Footer from './comps/Footer';
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -41,9 +42,9 @@ function App() {
         <Route  path="/" render={(props)=> <Navbar props={props}/>}/>
 
       </header>
+      <main>
         <Switch>
           <Route exact path="/" component={Home}/>
-          <main className="container">
           <Route exact path="/login" component={Login}/>
           <Route exact path="/cart" component={Cart}/>
           <Route exact path="/signup" component={SignUp}/>
@@ -52,11 +53,15 @@ function App() {
           <Route exact path="/addProd" component={AddProducts}/>
           <Route exact path="/EditProd/:id" render={(props) =><EditProducts urlParam={props.match.params.id}/>}/>
           <Route path="/" component={Page404}/>
-          </main>
         </Switch>
-      <footer></footer>
+        </main>
+
       <ToastContainer position="top-left"/>
     </Router>
+    <footer>
+        <Footer/>
+      </footer>
+
     </Provider>
   );
 }

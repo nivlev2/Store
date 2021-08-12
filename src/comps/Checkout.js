@@ -93,7 +93,7 @@ function Checkout(props){
           <form className="checkOut-form-form" onSubmit={handleSubmit(onSubForm)}>
           <div className="checkOutFormWrapper">
             <div className="row">   
-            <h3 className="my-4"><i class="fa fa-truck" aria-hidden="true"></i> Shipping details</h3>
+            <h3 className="my-4 text-l"><i class="fa fa-truck" aria-hidden="true"></i> Shipping details</h3>
             <div className="input-wrapper twoInputsInLine">
             <div className="input-data">
               <input {...nameRef} type="text" />
@@ -186,7 +186,7 @@ function Checkout(props){
             </div>
           </div>
           </div>
-        <h4 className="my-4">Total to pay: {total}$</h4>
+        <h4 className="my-4 text-primary border-bottom w-25 p-1">Total to pay: {total}$</h4>
         {inPayment && <div className="center-payment"><i class="fa fa-shield" aria-hidden="true"></i>
 <div class="dot-flashing"></div></div>}
       </div>

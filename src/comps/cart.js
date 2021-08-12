@@ -95,7 +95,7 @@ function Cart(props) {
     );
   }
   return (
-    <div className="container">
+    <div className="container cart-table-container">
       <div className="row">
         <div className="col-lg-9">
           <table className="table table-striped  mt-5 ">

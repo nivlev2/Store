@@ -17,7 +17,7 @@ function UserInfo(props){
     },[])
     if(lastOrders.length < 1){
         return(
-            <div className="container">
+            <div>
             <div className="home-header">
             <h1 className="home-title">Welcome {user.name} {user.lastName}
             <br/> You dont have orders yet :</h1>
@@ -26,14 +26,14 @@ function UserInfo(props){
         )
     }
     return(
-        <div className="container">
+        <div>
                     <div className="home-header">
                     <h1 className="home-title">Welcome {user.name} {user.lastName}
                     <br/> here your last orders :</h1>
                     </div>
             
-            <div className="mx-auto">
-                <div className="">
+            <div className="container">
+                <div className="row">
                     {lastOrders.map((order,i) =>{
                         let total = 0
                         return(
@@ -58,8 +58,6 @@ function UserInfo(props){
                                 <hr/>
                                 <h4 className="last-Order-total">Order total :{total}$</h4>
                             </div>
-                        
-
                         )
                     })}
                 </div>
