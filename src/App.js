@@ -36,14 +36,14 @@ function App() {
   return (
     <Provider store={store}>
     <Router>
-      <header className="container-fluid shadow-sm bg-dark ">
+      <header className="container-fluid shadow-sm nav-design ">
         {/* <Navbar /> */}
         <Route  path="/" render={(props)=> <Navbar props={props}/>}/>
 
       </header>
-      <main className="container">
         <Switch>
           <Route exact path="/" component={Home}/>
+          <main className="container">
           <Route exact path="/login" component={Login}/>
           <Route exact path="/cart" component={Cart}/>
           <Route exact path="/signup" component={SignUp}/>
@@ -52,8 +52,8 @@ function App() {
           <Route exact path="/addProd" component={AddProducts}/>
           <Route exact path="/EditProd/:id" render={(props) =><EditProducts urlParam={props.match.params.id}/>}/>
           <Route path="/" component={Page404}/>
+          </main>
         </Switch>
-      </main>
       <footer></footer>
       <ToastContainer position="top-left"/>
     </Router>

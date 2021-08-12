@@ -35,7 +35,7 @@ function NavBar(props) {
     <div className="container nav_top p-1 ">
       <div className="row align-items-center">
         <div className="logo col-lg-3 d-flex justify-content-between align-items-center">
-          <h2 className="text-danger" style={{cursor:"pointer"}} onClick={()=>history.push('/')}>Outdoor store</h2>
+          <h2 className="text-warning" style={{cursor:"pointer",fontFamily:" 'Dela Gothic One', cursive"}} onClick={()=>history.push('/')}>CampSafe</h2>
           <div
             className="burger"
             onClick={() => {

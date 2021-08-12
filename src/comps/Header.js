@@ -16,7 +16,7 @@ function Header({setSortQ,setSearchQ}) {
     <div>
       <header>
         <div className="home-header">
-          <h1 className="home-title">Welcome to the best outdoor store</h1>
+          <h1 className="home-title">All you need for a camping</h1>
         </div>
         <div className="container">
             <div className="row mt-2 ">

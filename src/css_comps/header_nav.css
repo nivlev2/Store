@@ -5,9 +5,11 @@
   text-decoration: none;
 }
 .icon:hover{
-  color:rgb(252, 102, 102);
+  color:#FF8E2B;
 }
-
+.nav-design{
+  background:#0D2137;
+}
 header .burger {
     display: none;
   }
@@ -45,7 +47,7 @@ header .burger {
       right:0;
       top:58px;
       width:70% !important;
-      background: black;
+      background:#0D2137;
       padding:0 !important;
       display: none;
       border:1px solid grey;
@@ -60,8 +62,8 @@ header .burger {
     }
   
     .icon:hover{
-      background: #333;
-      color:red;
+      background: rgb(38, 24, 68);
+      color:#FF8E2B;
     }
     
   }

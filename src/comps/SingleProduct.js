@@ -58,7 +58,7 @@ function SingleProduct(props){
             <img src={props.item.image} alt=""/>
         </div>
         <div className="product-details">
-            <h4>{props.item.name}</h4>
+            <h4 className="product-title">{props.item.name}</h4>
             <div className="product-bottom-details">
                 <div className="product-price">{props.item.price}$</div>
                 <div className="product-links"> 
@@ -66,13 +66,13 @@ function SingleProduct(props){
                     {/* <a href=""><i class="fa fa-heart"></i></a> */}
                     {!user.admin && <React.Fragment>
                                              <div className="counter">
-                        <div style={amount < 2? {cursor:"not-allowed"}: {cursor:"pointer"}} onClick={()=>{
+                        <div style={amount < 2? {background:"white",color:'black',cursor:"text"}: {cursor:"pointer"}} onClick={()=>{
                             if(amount > 1){
                                 setProdAmount(-1)
                             }
                         }} className="decrement">-</div>
                         <div className="count">{amount}</div>
-                        <div  style={amount > 98? {cursor:"not-allowed"}: {cursor:"pointer"}} onClick={()=>{
+                        <div  style={amount > 98? {background:"white",color:'black',cursor:"text"}: {cursor:"pointer"}} onClick={()=>{
                             if(amount < 99){
                                 setProdAmount(+1)
                             }

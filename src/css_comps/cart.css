@@ -135,6 +135,9 @@ margin: 2px;
     .last-Order{
         width: 100%;
     }
+    .home-header{
+        height: 500px;
+    }
 }
 
 @media (max-width:350px){
