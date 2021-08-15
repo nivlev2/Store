@@ -137,6 +137,10 @@ margin: 2px;
     
 }
 @media (max-width:650px){
+    .footer-contact{
+        margin-left:0;
+        
+    }
     .last-Order{
         width: 95%;
     }
