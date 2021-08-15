@@ -1,9 +1,9 @@
+import { useState } from "react";
 import "../css_comps/TopBar.scss";
 import { SvgIcon } from '@material-ui/core';
 
 import {Person,Mail} from "@material-ui/icons"
-import { useState } from "react";
-export default function TopBar(){
+ function TopBar(){
     const [menuOpen,setMenuOpen] = useState(false)
     const openMenu = () =>{
         setMenuOpen(!menuOpen)
@@ -36,3 +36,4 @@ export default function TopBar(){
         </div>
     )
 }
+export default TopBar
