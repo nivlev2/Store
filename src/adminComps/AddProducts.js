@@ -38,11 +38,11 @@ function AddProducts(props){
       }
     }
     return(
-        <div>     
-          <div className="container my-5">
+        <div  className="container my-5 p-3"  style={{minHeight:"calc(100vh - 230px)", background:"#E0EAF5",borderRadius:"30px"}}>     
+          <div>
           <form onSubmit={handleSubmit(onSubForm)} className="col-lg-6 mx-auto shadow p-3 rounded mt-3">
           <div>
-          <h3 className="text-center text-light mb-4">Add product</h3>
+          <h3 className="text-center mb-4">Add product</h3>
 
             </div>
             <div className="input-wrapper oneInputsInLine">

@@ -14,6 +14,9 @@ body
     font-family: 'Roboto', sans-serif;
     background-color: #0D2137;
 }
+.main{
+    min-height: calc(100vh - 230px);
+}
 a
 {
     text-decoration: none;

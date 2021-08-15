@@ -19,6 +19,7 @@ header .burger {
   background-color: #0D2137;
   grid-template-columns:1fr 1fr;
   box-sizing: border-box;
+  height: 230px;
 }
 .grid-item span{
   font-size: 1.2em;
