@@ -1,0 +1,82 @@
+
+.topBar{
+    width: 100%;
+    margin-left: 0;
+    height: 70px;
+    background-color: white;
+    position: fixed;
+    color: #0D2137 ;
+    transition:all 1s ease;
+
+
+    top: 0;
+    z-index: 2;
+    .wrapper{
+        padding: 10px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .left{
+        display: flex;
+        align-items: center;
+        .logo{
+            font-size: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            color: inherit;
+            margin-right: 40px;
+        }
+        .itemContainer{
+            display: flex;
+            margin-left: 30px;
+            align-items: center;
+        }
+        .icon{
+            font-size: 18px;
+            margin-right: 5px;
+        }
+        span{
+            font-size: 15px;
+            font-weight: 200;
+        }
+    }
+    .right{
+        .haburger{
+            width: 32px;
+            height: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        span{
+            height: 3px;
+            background-color: #0D2137;
+            transform-origin: left;
+            transition:all 1.5s ease;
+
+            
+        }
+    }
+    &.active{
+        background-color: #0D2137;
+        transition:all 2s ease;
+        color: white;
+        .haburger{
+            span{
+                &:first-child{
+                    background-color: #fff;
+                    transform: rotate(45deg);
+                }
+                // &:nth-child(2){
+                //     opacity: 0;
+                // }
+                &:last-child{
+                    background-color: #fff;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}

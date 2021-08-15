@@ -18,7 +18,7 @@ import UserInfo from './comps/UserInfo';
 import AddProducts from './adminComps/AddProducts';
 import EditProducts from './adminComps/EditProduct';
 import Footer from './comps/Footer';
-
+import TopBar from './comps/TopBar';
 const composeEnhancers =
   typeof window === 'object' &&
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
@@ -39,8 +39,8 @@ function App() {
     <Router>
       <header className="container-fluid shadow-sm nav-design ">
         {/* <Navbar /> */}
-        <Route  path="/" render={(props)=> <Navbar props={props}/>}/>
-
+        {/* <Route  path="/" render={(props)=> <Navbar props={props}/>}/> */}
+        <TopBar/>
       </header>
       <main>
         <Switch>
