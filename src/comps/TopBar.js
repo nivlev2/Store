@@ -3,12 +3,14 @@ import "../css_comps/TopBar.scss";
 import { SvgIcon } from '@material-ui/core';
 
 import {Person,Mail} from "@material-ui/icons"
+import React from "react";
  function TopBar(){
     const [menuOpen,setMenuOpen] = useState(false)
     const openMenu = () =>{
         setMenuOpen(!menuOpen)
     }
     return (
+        <React.Fragment>
         <div className= {menuOpen ? "topBar active" : "topBar"}>
             <div className="wrapper">
                 <div className="left">
@@ -34,6 +36,32 @@ import {Person,Mail} from "@material-ui/icons"
                 </div>                 
             </div>
         </div>
+        <div className={menuOpen? "menu active" : "menu"}>
+      <ul>
+        <li onClick={()=>setMenuOpen()}>
+          <a href="#intro" className="">
+            intro
+          </a>
+        </li>
+        <li onClick={()=>setMenuOpen(false)}>
+          <a href="#portfolio" className="">
+            portfolio
+          </a>
+        </li>
+
+        <li onClick={()=>setMenuOpen(false)}>
+          <a href="#works" className="">
+            works
+          </a>
+        </li>
+        <li onClick={()=>setMenuOpen(false)}>
+          <a href="#contact" className="">
+            contact
+          </a>
+        </li>
+      </ul>
+    </div>
+    </React.Fragment>
     )
 }
 export default TopBar
