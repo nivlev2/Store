@@ -72,7 +72,7 @@ function NavBar(props) {
           </Link>
 }
           {admin && <Link to="/addProd"><i className="fa fa-plus-circle  h3 icon" aria-hidden="true"></i>
-</Link>}
+    </Link>}
         </nav>
       </div>
     </div>

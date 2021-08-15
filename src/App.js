@@ -39,8 +39,8 @@ function App() {
     <Router>
       <header className="container-fluid shadow-sm nav-design ">
         {/* <Navbar /> */}
-        {/* <Route  path="/" render={(props)=> <Navbar props={props}/>}/> */}
-        <TopBar/>
+        <Route  path="/" render={(props)=> <Navbar props={props}/>}/>
+        {/* <TopBar/> */}
       </header>
       <main>
         <Switch>
@@ -57,10 +57,11 @@ function App() {
         </main>
 
       <ToastContainer position="top-left"/>
-    </Router>
-    <footer>
-        <Footer/>
+      <footer>
+        <Route path="/" component={Footer}/>
       </footer>
+
+    </Router>
 
     </Provider>
   );
